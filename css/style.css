@@ -804,6 +804,13 @@ a {
   line-height: 135px;
   text-transform: uppercase;
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .header-preview-title .bottom-preview-title {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 992px) {
   .header-preview-title .bottom-preview-title {
     font-size: 130px;
