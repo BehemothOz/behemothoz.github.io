@@ -798,7 +798,7 @@ a {
 }
 
 .header-preview-title .bottom-preview-title {
-  max-width: 100%;
+  /*max-width: 100%;*/
   margin: 40px 0;
   font-family: "Montserrat", sans-serif;
   font-size: 150px;
