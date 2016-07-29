@@ -746,10 +746,9 @@ a {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-
   min-height: 715px;
   height: 715px;
-  padding: 0 90px;
+  padding: 0 10%;
   text-align: center;
 }
 @media (max-width: 750px) {
@@ -798,7 +797,6 @@ a {
 }
 
 .header-preview-title .bottom-preview-title {
-  width: 100%;
   margin: 40px 0;
   font-family: "Montserrat", sans-serif;
   font-size: 150px;
