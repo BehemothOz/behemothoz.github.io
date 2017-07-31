@@ -54,12 +54,12 @@
                 // delete_cookie(key);
                 // Cookies.remove(key, { path: "/",domain: ".localhost.com" });
                 // Cookies.remove(key, { path: '' });
-                // eraseCookie(key, "..com"); //erases the .one.om domain cookie
+                eraseCookie(key, ".behemothoz.github.io/bnr/"); //erases the .one.om domain cookie
                 eraseCookie(key, ""); //erases the www.one.om domain cookie
             }
         }
 
-        window.location.href = e.target.firstElementChild.getAttribute('href');
+        // window.location.href = e.target.firstElementChild.getAttribute('href');
     };
 
     langItem.forEach(function(el, i) {
