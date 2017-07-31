@@ -59,7 +59,7 @@
             }
         }
 
-        // window.location.href = e.target.firstElementChild.getAttribute('href');
+        window.location.href = '/bnr/'
     };
 
     langItem.forEach(function(el, i) {
