@@ -1,5 +1,4 @@
 /* Fonts */
-
 /* Color */
 .about {
   margin: 0 auto;
@@ -54,17 +53,18 @@ a {
 }
 
 .main-container {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  -webkit-transition: all 0.6s ease;
-  transition: all 0.6s ease
-}
+  /*opacity: 0;*/
+  /*visibility: hidden;*/
+  /*pointer-events: none;*/
+  display: none;
 
-.main-container.visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
+  /*transition: all 0.6s ease;*/
+
+  /*&.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }*/
 }
 
 .preloader {
