@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <link rel="stylesheet" href="css/main.css"/>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab" rel="stylesheet"/>
-  <script>
-    $('.main-container').hide();
-    
-  </script>
 </head>
 <body>
   <div class="main-container">
@@ -52,13 +48,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script>
     $(window).on('load', function() {
-      setTimeout(function() { 
+      setTimeout(function() {
         $('body').addClass('no-active');
         $('.main-container').fadeIn("slow");
         $('.preloader').addClass('hide');
-      }, 3000);
-    })
+      }, 2000);
     
+    });
   </script>
   <script>
     $(window).on("scroll", function() {
