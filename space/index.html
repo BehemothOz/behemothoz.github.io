@@ -1,79 +1,80 @@
 <!DOCTYPE html>
-<html lang="en"></html>
-<head>
-  <meta charset="UTF-8"/>
-  <title>Document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <link rel="stylesheet" href="css/main.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script>
-    $(window).on('load', function() {
-      setTimeout(function() {
-        var preloader = $('.preloader');
-        var preloaderImg = preloader.find('.preloader-img');
-    
-        preloaderImg.fadeOut();
-        preloader.delay(500).fadeOut();
-      }, 2000)
-    })
-    
-  </script>
-</head>
-<body>
-  <div class="preloader">
-    <div class="preloader-img"></div>
-  </div>
-  <div class="main-container">
-    <!-- Meteors block-->
-    <div class="meteors">
-      <div class="meteors__item"></div>
-      <div class="meteors__item"></div>
-      <div class="meteors__item"></div>
-      <div class="meteors__item"></div>
-      <div class="meteors__item"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(window).on('load', function() {
+        setTimeout(function() {
+          var preloader = $('.preloader');
+          var preloaderImg = preloader.find('.preloader-img');
+      
+          preloaderImg.fadeOut();
+          preloader.delay(500).fadeOut();
+        }, 2000)
+      })
+      
+    </script>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="preloader-img"></div>
     </div>
-    <!-- Main header-->
-    <header class="main-header">
-      <!-- Sticky-->
-      <div class="sticky-header"><a href="#~" class="sticky-header__logo_link">Cassini</a></div>
-    </header>
-    <div class="container">
-      <section class="about">
-        <h1 class="about__title">Cassini</h1>
-        <p class="about__desc">End of Mission <b>September 15, 201</b></p>
-        <!-- Player-->
-        <div class="about__player player">
-          <audio controls="controls" id="audio_player">
-            <source src="media/space.mp3" type="audio/mpeg"/>Your browser does not support the audio element.
-          </audio>
-        </div>
-      </section>
-      <!-- Article-->
-      <section class="about__text">
-        <p class="text__line">Having expended almost every bit of the rocket propellant it carried to Saturn, operators are deliberately plunging Cassini into the planet to ensure Saturn’s moons will remain pristine for future exploration — in particular, the ice-covered, ocean-bearing moon Enceladus, but also Titan, with its intriguing pre-biotic chemistry.</p>
-        <p class="text__line">Beginning in 2010, Cassini began a seven-year mission extension in which it completed many moon flybys while observing seasonal changes on Saturn and Titan. The plan for this phase of the mission was to expend all of the spacecraft’s propellant while exploring Saturn, ending with a plunge into the planet’s atmosphere.</p>
-        <p class="text__line">In April 2017, Cassini was placed on an impact course that unfolded over five months of daring dives — a series of 22 orbits that each pass between the planet and its rings. Called the Grand Finale, this final phase of the mission has brought unparalleled observations of the planet and its rings from closer than ever before.</p>
-        <p class="text__line">On Sept. 15, 2017, the spacecraft will make its final approach to the giant planet Saturn. But this encounter will be like no other. This time, Cassini will dive into the planet’s atmosphere, sending science data for as long as its small thrusters can keep the spacecraft’s antenna pointed at Earth. Soon after, Cassini will burn up and disintegrate like a meteor.</p>
-        <p class="text__line">To its very end, Cassini is a mission of thrilling exploration. Launched on Oct. 15, 1997, the mission entered orbit around Saturn on June 30, 2004 (PDT), carrying the European Huygens probe. After its four-year prime mission, Cassini’s tour was extended twice. Its key discoveries have included the global ocean with indications of hydrothermal activity within Enceladus, and liquid methane seas on Titan.</p>
-        <p class="text__line">And although the spacecraft may be gone after the finale, its enormous collection of data about Saturn – the giant planet itself, its magnetosphere, rings and moons — will continue to yield new discoveries for decades.</p><a href="https://saturn.jpl.nasa.gov/mission/about-the-mission/summary/">sources</a>
-      </section>
+    <div class="main-container">
+      <!-- Meteors block-->
+      <div class="meteors">
+        <div class="meteors__item"></div>
+        <div class="meteors__item"></div>
+        <div class="meteors__item"></div>
+        <div class="meteors__item"></div>
+        <div class="meteors__item"></div>
+      </div>
+      <!-- Main header-->
+      <header class="main-header">
+        <!-- Sticky-->
+        <div class="sticky-header"><a href="#~" class="sticky-header__logo_link">Cassini</a></div>
+      </header>
+      <div class="container">
+        <section class="about">
+          <h1 class="about__title">Cassini</h1>
+          <p class="about__desc">End of Mission <b>September 15, 201</b></p>
+          <!-- Player-->
+          <div class="about__player player">
+            <audio controls="controls" id="audio_player">
+              <source src="media/space.mp3" type="audio/mpeg"/>Your browser does not support the audio element.
+            </audio>
+          </div>
+        </section>
+        <!-- Article-->
+        <section class="about__text">
+          <p class="text__line">Having expended almost every bit of the rocket propellant it carried to Saturn, operators are deliberately plunging Cassini into the planet to ensure Saturn’s moons will remain pristine for future exploration — in particular, the ice-covered, ocean-bearing moon Enceladus, but also Titan, with its intriguing pre-biotic chemistry.</p>
+          <p class="text__line">Beginning in 2010, Cassini began a seven-year mission extension in which it completed many moon flybys while observing seasonal changes on Saturn and Titan. The plan for this phase of the mission was to expend all of the spacecraft’s propellant while exploring Saturn, ending with a plunge into the planet’s atmosphere.</p>
+          <p class="text__line">In April 2017, Cassini was placed on an impact course that unfolded over five months of daring dives — a series of 22 orbits that each pass between the planet and its rings. Called the Grand Finale, this final phase of the mission has brought unparalleled observations of the planet and its rings from closer than ever before.</p>
+          <p class="text__line">On Sept. 15, 2017, the spacecraft will make its final approach to the giant planet Saturn. But this encounter will be like no other. This time, Cassini will dive into the planet’s atmosphere, sending science data for as long as its small thrusters can keep the spacecraft’s antenna pointed at Earth. Soon after, Cassini will burn up and disintegrate like a meteor.</p>
+          <p class="text__line">To its very end, Cassini is a mission of thrilling exploration. Launched on Oct. 15, 1997, the mission entered orbit around Saturn on June 30, 2004 (PDT), carrying the European Huygens probe. After its four-year prime mission, Cassini’s tour was extended twice. Its key discoveries have included the global ocean with indications of hydrothermal activity within Enceladus, and liquid methane seas on Titan.</p>
+          <p class="text__line">And although the spacecraft may be gone after the finale, its enormous collection of data about Saturn – the giant planet itself, its magnetosphere, rings and moons — will continue to yield new discoveries for decades.</p><a href="https://saturn.jpl.nasa.gov/mission/about-the-mission/summary/">sources</a>
+        </section>
+      </div>
     </div>
-  </div>
-  <script>
-    $(window).on("scroll", function() {
-    
-      var stickyPostition = $('.sticky-header').position().top;
-    
-      if ($(this).scrollTop() < 394.1875) {
-           $('.sticky-header').removeClass('sticky-header__fix');
-    
-      } else {
-    
-        if ($(this).scrollTop() > stickyPostition ) {
-            $('.sticky-header').addClass('sticky-header__fix');
+    <script>
+      $(window).on("scroll", function() {
+      
+        var stickyPostition = $('.sticky-header').position().top;
+      
+        if ($(this).scrollTop() < 394.1875) {
+             $('.sticky-header').removeClass('sticky-header__fix');
+      
+        } else {
+      
+          if ($(this).scrollTop() > stickyPostition ) {
+              $('.sticky-header').addClass('sticky-header__fix');
+          }
         }
-      }
-    });
-  </script>
-</body>
+      });
+    </script>
+  </body>
+</html>
