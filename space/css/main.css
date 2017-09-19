@@ -41,11 +41,12 @@ body {
   background-color: #fff;
   overflow-x: hidden;
   -webkit-transition: all 0.6s ease;
-  transition: all 0.6s ease
+  transition: all 0.6s ease;
+  background-color: rgba(0, 0, 0, .8)
 }
 
 body.no-active {
-  background-color: rgba(0, 0, 0, .8);
+  background-color: #fff;
 }
 
 a {

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/main.css"/>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab" rel="stylesheet"/>
 </head>
-<body class="no-active">
+<body>
   <div class="main-container">
     <!-- Meteors block-->
     <div class="meteors">
@@ -49,7 +49,7 @@
   <script>
     $(window).on('load', function() {
       setTimeout(function() { 
-        $('body').removeClass('no-active');
+        $('body').addClass('no-active');
         $('.main-container').addClass('visible');
         $('.preloader').addClass('hide');
       }, 3000);
