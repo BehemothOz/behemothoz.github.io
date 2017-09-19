@@ -7,18 +7,7 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-      $(window).on('load', function() {
-        setTimeout(function() {
-          var preloader = $('.preloader');
-          var preloaderImg = preloader.find('.preloader-img');
-      
-          preloaderImg.fadeOut();
-          preloader.delay(500).fadeOut();
-        }, 2000)
-      })
-      
-    </script>
+    <script src="/js/preloader.js"></script>
   </head>
   <body>
     <div class="preloader">
@@ -60,21 +49,6 @@
         </section>
       </div>
     </div>
-    <script>
-      $(window).on("scroll", function() {
-      
-        var stickyPostition = $('.sticky-header').position().top;
-      
-        if ($(this).scrollTop() < 394.1875) {
-             $('.sticky-header').removeClass('sticky-header__fix');
-      
-        } else {
-      
-          if ($(this).scrollTop() > stickyPostition ) {
-              $('.sticky-header').addClass('sticky-header__fix');
-          }
-        }
-      });
-    </script>
+    <script scr="/js/header.js"></script>
   </body>
 </html>
