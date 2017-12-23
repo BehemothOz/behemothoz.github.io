@@ -139,16 +139,9 @@ th {
 }
 
 @font-face {
-  font-family: "Avenir Roman";
-  src: url("../fonts/Avenir_Roman.ttf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Exo";
-  src: url("../fonts/Exo_Medium.otf") format("opentype");
-  font-weight: 500;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirNext_Bold.ttf") format("opentype");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -159,11 +152,10 @@ th {
 }
 
 html {
-  min-width: 414px;
+  min-width: 320px;
 }
 
 body {
-  min-width: 414px;
   margin: 0;
   font-family: "Avenir";
   font-size: 16px;
@@ -171,12 +163,26 @@ body {
   color: #000;
   background-color: #fff;
   overflow-x: hidden;
+  min-width: 320px;
 }
 
 .container {
-  max-width: 480px;
+  position: relative;
   margin: 0 auto;
-  padding: 0 33px;
+  width: 320px;
+  padding: 0 15px;
+}
+
+@media screen and (min-width: 414px) {
+  .container {
+    width: 414px;
+    padding: 0 30px;
+  }
+}
+
+.section {
+  height: 736px;
+  padding-top: 140px;
 }
 
 ul {
@@ -201,14 +207,19 @@ h1, h2, h3, p {
   padding: 0.2em 0;
 }
 
-.section {
-  height: 736px;
-  padding-top: 140px;
-}
-
-.section.preview-section {
+.preview-section {
   position: relative;
   padding-top: 228px;
+}
+
+.preview-section .cat-gif {
+  position: absolute;
+  top: -71px;
+  left: 50%;
+  width: 414px;
+  height: 350px;
+  margin-left: -207px;
+  background: url("../images/cat.gif") no-repeat;
 }
 
 .header {
@@ -226,141 +237,333 @@ h1, h2, h3, p {
   top: 0;
 }
 
-.header .main-title {
-  font-family: "Exo";
-  font-size: 35px;
-  font-weight: 500;
-  letter-spacing: 9px;
+.header .logo {
+  width: 100%;
 }
 
-.header .main-title-sub {
-  font-family: "Avenir Roman";
-  font-size: 15px;
-  letter-spacing: 0.2px;
-}
-
-.image-card {
+.section-card .image-card {
   margin-bottom: 15px;
 }
 
-.image-card .card {
+.section-card .image-card .card {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
 }
 
-.info-line {
+.section-card .info-line {
   margin-bottom: 4px;
   padding: 12px;
   text-align: center;
 }
 
-.info-line.line-gray {
+.section-card .info-line.line-gray {
   background-color: #f3f3f3;
 }
 
-.main-line .title {
-  font-size: 17px;
+.section-card .main-line .title {
   font-weight: 500;
-  line-height: 27px;
   text-transform: uppercase;
+  font-size: 15px;
+  line-height: 24px;
 }
 
-.main-line .tip {
-  font-size: 13px;
+@media screen and (min-width: 414px) {
+  .section-card .main-line .title {
+    font-size: 17px;
+    line-height: 27px;
+  }
+}
+
+.section-card .main-line .tip {
+  font-size: 11px;
   letter-spacing: 1px;
 }
 
-.sub-line {
+@media screen and (min-width: 414px) {
+  .section-card .main-line .tip {
+    font-size: 13px;
+  }
+}
+
+.section-card .sub-line {
   padding-bottom: 0;
 }
 
-.sub-line .info-title {
-  font-size: 14px;
+.section-card .sub-line .info-title {
+  font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.interface-tour::after {
+@media screen and (min-width: 414px) {
+  .section-card .sub-line .info-title {
+    font-size: 14px;
+  }
+}
+
+.section-interface .interface-tour::after {
   content: "";
   display: block;
   clear: both;
   float: none;
 }
 
-.interface-tour .images {
-  width: 213px;
+.section-interface .interface-tour .images {
+  width: 165px;
 }
 
-.interface-tour .interface-elements {
-  width: calc(100% - 213px);
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour .images {
+    width: 213px;
+  }
 }
 
-.interface-tour.view-left {
+.section-interface .interface-tour .images img {
+  width: 100%;
+}
+
+.section-interface .interface-tour .interface-elements {
+  width: calc(100% - 165px);
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour .interface-elements {
+    width: calc(100% - 213px);
+  }
+}
+
+.section-interface .interface-tour.view-left {
   height: 499px;
   padding-top: 45px;
   padding-bottom: 25px;
 }
 
-.interface-tour.view-left .images {
+.section-interface .interface-tour.view-left .images {
   float: left;
 }
 
-.interface-tour.view-left .interface-elements {
+.section-interface .interface-tour.view-left .interface-elements {
   float: right;
-  padding-top: 32px;
+  padding-top: 15px;
   padding-left: 20px;
 }
 
-.interface-tour.view-right .images {
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .interface-elements {
+    padding-top: 32px;
+  }
+}
+
+.section-interface .interface-tour.view-left .interface-elements .element:first-of-type {
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .interface-elements .element {
+    margin-bottom: 15px;
+  }
+}
+
+.section-interface .interface-tour.view-left .interface-elements .element:nth-of-type(2) {
+  margin-bottom: 22px;
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .interface-elements .element:nth-of-type(2) {
+    margin-bottom: 38px;
+  }
+}
+
+.section-interface .interface-tour.view-left .arrow.arrow-top {
+  top: 7px;
+  left: -37px;
+  width: 37px;
+  height: 73px;
+  background-image: url("../images/arrow/arrow_1.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .arrow.arrow-top {
+    top: 10px;
+    left: -41px;
+    height: 80px;
+  }
+}
+
+.section-interface .interface-tour.view-left .arrow.arrow-middle {
+  top: -38px;
+  left: -167px;
+  width: 166px;
+  height: 51px;
+  background-image: url("../images/arrow/arrow_2.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .arrow.arrow-middle {
+    top: -40px;
+    left: -211px;
+    width: 211px;
+  }
+}
+
+.section-interface .interface-tour.view-left .arrow.arrow-bottom {
+  top: 5px;
+  left: -93px;
+  width: 92px;
+  height: 21px;
+  background-image: url("../images/arrow/arrow_3.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-left .arrow.arrow-bottom {
+    top: 10px;
+    left: -115px;
+    width: 115px;
+  }
+}
+
+.section-interface .interface-tour.view-right .images {
   float: right;
 }
 
-.interface-tour.view-right .interface-elements {
+.section-interface .interface-tour.view-right .interface-elements {
   float: left;
-  padding-top: 95px;
+  padding-top: 75px;
   padding-right: 20px;
 }
 
-.interface-tour .element {
-  margin-bottom: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 21px;
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .interface-elements {
+    padding-top: 95px;
+  }
+}
+
+.section-interface .interface-tour.view-right .element:first-of-type {
+  margin-bottom: 31px;
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .element:first-of-type {
+    margin-bottom: 50px;
+  }
+}
+
+.section-interface .interface-tour.view-right .element:nth-of-type(2) {
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .element:nth-of-type(2) {
+    margin-bottom: 30px;
+  }
+}
+
+.section-interface .interface-tour.view-right .arrow.arrow-top {
+  top: -7px;
+  right: -41px;
+  width: 36px;
+  height: 68px;
+  background-image: url("../images/arrow/arrow_4.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .arrow.arrow-top {
+    width: 34px;
+    height: 86px;
+  }
+}
+
+.section-interface .interface-tour.view-right .arrow.arrow-middle {
+  top: 7px;
+  right: -114px;
+  width: 108px;
+  height: 5px;
+  background-image: url("../images/arrow/arrow_5.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .arrow.arrow-middle {
+    right: -142px;
+    width: 135px;
+  }
+}
+
+.section-interface .interface-tour.view-right .arrow.arrow-bottom {
+  top: 6px;
+  right: -73px;
+  width: 74px;
+  height: 66px;
+  background-image: url("../images/arrow/arrow_6.svg");
+}
+
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour.view-right .arrow.arrow-bottom {
+    top: 10px;
+    width: 66px;
+    height: 86px;
+  }
+}
+
+.section-interface .interface-tour .element {
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
   letter-spacing: 1.2px;
 }
 
-.interface-tour .element span {
-  font-size: 15px;
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour .element {
+    font-size: 17px;
+    line-height: 21px;
+  }
+}
+
+.section-interface .interface-tour .element span {
+  font-size: 12px;
+  font-weight: normal;
   line-height: 18px;
 }
 
-.interface-tour .element:first-of-type {
-  margin-bottom: 50px;
+@media screen and (min-width: 414px) {
+  .section-interface .interface-tour .element span {
+    font-size: 15px;
+  }
 }
 
-.interface-tour .element:nth-of-type(2) {
-  margin-bottom: 35px;
+.section-interface .interface-tour .arrow {
+  position: absolute;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.starts-order {
+.section-interface .starts-order {
   margin-top: 25px;
 }
 
-.starts-order .desc {
+.section-interface .starts-order .desc {
   margin-bottom: 22px;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
 }
 
-.starts-order .btn-order {
+@media screen and (min-width: 414px) {
+  .section-interface .starts-order .desc {
+    font-size: 14px;
+  }
+}
+
+.section-interface .starts-order .btn-order {
   width: 100%;
-  height: 44px;
-  font-size: 15px;
-  font-weight: 900;
+  height: 41px;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 1px;
   text-align: center;
   color: #87b36c;
@@ -370,7 +573,19 @@ h1, h2, h3, p {
   border-radius: 22px;
 }
 
-.price-card {
+@media screen and (min-width: 414px) {
+  .section-interface .starts-order .btn-order {
+    height: 44px;
+    font-size: 15px;
+  }
+}
+
+.section-interface .starts-order .btn-order:hover {
+  color: #fff;
+  background-color: #87b36c;
+}
+
+.section-price .price-card {
   margin-top: 40px;
   margin-bottom: 26px;
   padding-top: 26px;
@@ -380,44 +595,45 @@ h1, h2, h3, p {
   text-align: center;
 }
 
-.price-card .name-card {
+.section-price .price-card .name-card {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
-.price-card .cost-card {
+.section-price .price-card .cost-card {
   font-size: 30px;
+  letter-spacing: 2.3px;
+}
+
+.section-price .price-card .cost-card .num {
+  font-size: 100px;
+  line-height: 125px;
   letter-spacing: 3.3px;
 }
 
-.price-card .cost-card .num {
-  font-size: 100px;
-  line-height: 125px;
-}
-
-.free-services {
+.section-price .free-services {
   height: 304px;
   border: 2px solid #000;
   text-align: center;
   text-transform: uppercase;
 }
 
-.free-services .title {
+.section-price .free-services .title {
   margin: 0 30px;
   padding: 15px 0 12px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 1.2px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.33);
 }
 
-.free-services .services-list {
+.section-price .free-services .services-list {
   padding-top: 25px;
 }
 
-.free-services .services-list .services-item {
+.section-price .free-services .services-list .services-item {
   margin-bottom: 20px;
   font-size: 14px;
   font-weight: 500;
@@ -454,10 +670,22 @@ h1, h2, h3, p {
 
 .footer .footer-top .footer-info-list .title,
 .footer .footer-top .footer-info-list .footer-info-item {
-  margin-bottom: 10px;
-  font-size: 15px;
+  margin-bottom: 5px;
+  font-size: 13px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 414px) {
+  .footer .footer-top .footer-info-list .title,
+  .footer .footer-top .footer-info-list .footer-info-item {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+}
+
+.footer .footer-top .footer-info-list .footer-info-item:hover {
+  text-decoration: underline;
 }
 
 .footer .footer-top .footer-info-list .title {
@@ -469,8 +697,14 @@ h1, h2, h3, p {
 }
 
 .footer .bottom-footer .copyright {
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 0.9px;
+}
+
+@media screen and (min-width: 414px) {
+  .footer .bottom-footer .copyright {
+    font-size: 13px;
+  }
 }
 
 .footer .bottom-footer .docs-list {
@@ -494,8 +728,14 @@ h1, h2, h3, p {
 }
 
 .footer .bottom-footer .reg {
-  font-size: 10px;
+  font-size: 8px;
   letter-spacing: 0.6px;
+}
+
+@media screen and (min-width: 414px) {
+  .footer .bottom-footer .reg {
+    font-size: 10px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

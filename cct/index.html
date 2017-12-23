@@ -15,19 +15,23 @@
 
 
     <div class="section preview-section">
-      <!-- Header -->
-      <!-- TODO Это лого -->
-      <header class="header">
-        <h1 class="main-title">BLACKCATCARD</h1>
-        <div class="main-title-sub">Get Control of Your Money and Black Cat for Luck</div>
-      </header>
+      <!-- <div class="container"> -->
+        <!-- Gif -->
+        <!-- <div class="cat-gif"></div> -->
+        <!-- Header -->
+        <header class="header">
+          <div class="container">
+            <img class="logo" src="images/logo.svg">
+          </div>
+        </header>
+      <!-- </div> -->
     </div>
 
     <!-- Content -->
     <div class="container">
 
       <!-- First section -->
-      <section class="section">
+      <section class="section section-card">
         <div class="image-card">
           <img src="images/card.png" class="card">
         </div>
@@ -60,29 +64,43 @@
       </section>
 
       <!-- Second section -->
-      <section class="section">
+      <section class="section section-interface">
         <div class="interface-tour view-left">
           <div class="images">
             <img src="images/iphone1.png">
           </div>
           <div class="interface-elements">
-            <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span></div>
-            <div class="element">Optional savings account in Swiss bank</div>
-            <div class="element">Black cat in the app</div>
+            <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
+              <span class="arrow arrow-top"></span>
+            </div>
+            <div class="element">Optional savings account in Swiss bank
+              <span class="arrow arrow-middle"></span>
+            </div>
+            <div class="element">Black cat in the app
+              <span class="arrow arrow-bottom"></span>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Third section -->
-      <section class="section">
+      <section class="section section-interface">
         <div class="interface-tour view-right">
           <div class="images">
             <img src="images/iphone2.png">
           </div>
           <div class="interface-elements">
-            <div class="element">Card Limits management</div>
-            <div class="element">Black cat in the app</div>
-            <div class="element">Temporary card blocking</div>
+            <div class="element">Card Limits management
+              <span class="arrow arrow-top"></span>
+            </div>
+            <div class="element">
+              Black cat in the app
+              <span class="arrow arrow-middle"></span>
+            </div>
+            <div class="element">
+              Temporary card blocking
+              <span class="arrow arrow-right arrow-bottom"></span>
+            </div>
           </div>
         </div>
 
@@ -93,7 +111,7 @@
       </section>
 
       <!-- Fourth section -->
-      <section class="section">
+      <!-- <section class="section section-price">
         <div class="price-card">
           <div class="name-card">One Blackcatcard Standart</div>
           <div class="cost-card"><span class="num">9</span>€/month</div>
@@ -109,7 +127,7 @@
             <li class="services-item">Bank Transfers*<br>*7,000 €</li>
           </ul>
         </div>
-      </section>
+      </section> -->
     </div>
 
     <!-- Footer -->
@@ -120,12 +138,18 @@
           <div class="footer-top">
             <div class="footer-info-list">
               <div class="title">Pricing</div>
-              <div class="footer-info-item">FAQ</div>
+              <div class="footer-info-item">
+                <a href="">FAQ</a>
+              </div>
             </div>
             <div class="footer-info-list">
               <div class="title">Company</div>
-              <div class="footer-info-item">About</div>
-              <div class="footer-info-item">Contacts</div>
+              <div class="footer-info-item">
+                <a href="">About</a>
+              </div>
+              <div class="footer-info-item">
+                <a href="">Contacts</a>
+              </div>
             </div>
             <div class="footer-info-list">
               <div class="title">Terms & Conditions</div>
