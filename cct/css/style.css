@@ -216,8 +216,7 @@ h1, h2, h3, p {
 .preview-section {
   position: relative;
   padding-top: 0;
-  height: 95vh;
-  background-color: pink;
+  height: 100vh;
 }
 
 @media screen and (min-width: 414px) {
@@ -235,21 +234,33 @@ h1, h2, h3, p {
 .preview-section .header-clone {
   position: absolute;
   top: 50%;
-  margin-top: -56px;
+  margin-top: -48px;
   width: 100%;
-  height: 112px;
+  height: 96px;
   background-color: transparent;
 }
 
+@media screen and (min-width: 414px) {
+  .preview-section .header-clone {
+    height: 118px;
+    margin-top: -59px;
+  }
+}
+
 .preview-section .cat-gif {
-  display: none;
   position: absolute;
-  bottom: -65px;
   width: 100%;
   height: 500px;
   background: url("../images/cat.gif") no-repeat center;
   display: block;
   z-index: 2000;
+  bottom: -70px;
+}
+
+@media screen and (min-width: 414px) {
+  .preview-section .cat-gif {
+    bottom: -60px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -263,11 +274,13 @@ h1, h2, h3, p {
   top: 50%;
   width: 100%;
   padding-top: 25px;
+  padding-bottom: 10px;
   text-align: center;
   background-color: #fff;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   z-index: 1000;
-  margin-top: -50px;
-  padding-bottom: 25px;
 }
 
 @media screen and (min-width: 414px) {
@@ -805,7 +818,7 @@ h1, h2, h3, p {
 }
 
 .section-price .free-services .services-list .services-item {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -814,6 +827,7 @@ h1, h2, h3, p {
 
 @media screen and (min-width: 414px) {
   .section-price .free-services .services-list .services-item {
+    margin-bottom: 20px;
     font-size: 14px;
   }
 }
