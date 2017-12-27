@@ -216,8 +216,8 @@ h1, h2, h3, p {
 .preview-section {
   position: relative;
   padding-top: 0;
-  height: 100vh;
-  background-color: lightgreen;
+  height: 95vh;
+  background-color: pink;
 }
 
 @media screen and (min-width: 414px) {
