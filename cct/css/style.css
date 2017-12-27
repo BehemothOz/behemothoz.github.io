@@ -217,6 +217,7 @@ h1, h2, h3, p {
   position: relative;
   padding-top: 0;
   height: 100vh;
+  background-color: lightgreen;
 }
 
 @media screen and (min-width: 414px) {
