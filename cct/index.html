@@ -7,6 +7,7 @@
     <title>BLACKCATCARD | Landing</title>
     <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/fullpage.min.css" rel="stylesheet">
   </head>
   <body>
     <!--[if lte IE 9]>
@@ -14,126 +15,150 @@
     <![endif]-->
 
 
-    <div class="preview-section">
+    <!-- <div class="preview-section"> -->
       <!-- Header -->
-      <div class="header-clone">
-        <div class="cat-gif"></div>
+      <!-- <div class="header-clone">
+        <div class="cat-gif" style="background-image: url(images/cat.gif);"></div>
       </div>
       <header class="header">
         <div class="container">
           <img class="logo" src="images/logo.svg">
         </div>
       </header>
-    </div>
+    </div> -->
 
     <!-- Content -->
     <div class="container">
+      <div id="fullpage">
 
-      <!-- First section -->
-      <section class="section section-card">
-        <div class="image-card">
-          <img src="images/card.png" class="card">
-        </div>
+        <!-- <div class="section">Определённый раздел</div>
+        <div class="section">Определённый раздел</div>
+        <div class="section">Определённый раздел</div>
+        <div class="section">Определённый раздел</div> -->
 
-        <div class="info-line main-line line-gray">
-          <h2 class="title">Open bank account online in 5 minutes.</h2>
-          <div class="tip">Passport or any photo ID are required.</div>
-        </div>
-
-        <div class="info-line main-line line-gray">
-          <h2 class="title">Payment card issuance in 24 h*</h2>
-          <div class="tip">*upon verification</div>
-        </div>
-
-        <div class="info-line sub-line">
-          <div class="info-title">Free instant payments between Blackcatcard users</div>
-        </div>
-
-        <div class="info-line sub-line">
-          <div class="info-title">Currency exchange</div>
-        </div>
-
-        <div class="info-line sub-line">
-          <div class="info-title">Cryptowallet</div>
-        </div>
-
-        <div class="info-line sub-line">
-          <div class="info-title">Cashback</div>
-        </div>
-      </section>
-
-      <!-- Second section -->
-      <section class="section section-interface">
-        <div class="interface-tour view-left">
-          <div class="images">
-            <img src="images/iphone1.png">
+        <!-- First section -->
+        <section class="section section-card">
+          <div class="image-card">
+            <!-- <img src="images/card.png" class="card"> -->
+            <picture>
+              <source media="(min-width: 414px)" srcset="images/bcc-real@3x.png">
+              <img src="images/bcc-real@2x.png" class="card">
+            </picture>
           </div>
-          <div class="interface-elements">
-            <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
-              <span class="arrow arrow-top"></span>
+
+          <div class="line-wrapper">
+            <div class="info-line main-line line-gray">
+              <h2 class="title">Open bank account online in 5 minutes.</h2>
+              <div class="tip">Passport or any photo ID are required.</div>
             </div>
-            <div class="element">Optional savings account in Swiss bank
-              <span class="arrow arrow-middle"></span>
+
+            <div class="info-line main-line line-gray">
+              <h2 class="title">Payment card issuance in 24 h*</h2>
+              <div class="tip">*upon verification</div>
             </div>
-            <div class="element">Black cat in the app
-              <span class="arrow arrow-bottom"></span>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Free instant payments between Blackcatcard users</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Currency exchange</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Cryptowallet</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Cashback</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Third section -->
-      <section class="section section-interface">
-        <div class="interface-tour view-right">
-          <div class="images">
-            <img src="images/iphone2.png">
+        <!-- Second section -->
+        <section class="section section-interface">
+          <div class="interface-tour view-left">
+            <div class="images">
+              <!-- <img src="images/iphone1.png"> -->
+              <picture>
+                <source media="(min-width: 414px)" srcset="images/iphone-1@3x.png">
+                <img src="images/iphone-1@2x.png" class="card">
+              </picture>
+            </div>
+            <div class="interface-elements">
+              <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
+                <span class="arrow arrow-top"></span>
+              </div>
+              <div class="element">Optional savings account in Swiss bank
+                <span class="arrow arrow-middle"></span>
+              </div>
+              <div class="element">Black cat in the app
+                <span class="arrow arrow-bottom"></span>
+              </div>
+            </div>
           </div>
-          <div class="interface-elements">
-            <div class="element">Card Limits management
-              <span class="arrow arrow-top"></span>
+        </section>
+
+        <!-- Third section -->
+        <section class="section section-interface">
+          <div class="interface-tour view-right">
+            <div class="images">
+              <!-- <img src="images/iphone2.png"> -->
+              <picture>
+                <source media="(min-width: 414px)" srcset="images/iphone-2@3x.png">
+                <img src="images/iphone-2@2x.png" class="card">
+              </picture>
             </div>
-            <div class="element">
-              Black cat in the app
-              <span class="arrow arrow-middle"></span>
-            </div>
-            <div class="element">
-              Temporary card blocking
-              <span class="arrow arrow-right arrow-bottom"></span>
+            <div class="interface-elements">
+              <div class="element">Card Limits management
+                <span class="arrow arrow-top"></span>
+              </div>
+              <div class="element">
+                Black cat in the app
+                <span class="arrow arrow-middle"></span>
+              </div>
+              <div class="element">
+                Temporary card blocking
+                <span class="arrow arrow-right arrow-bottom"></span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="starts-order">
-          <div class="desc">Card issuance starts in March 2018</div>
-          <button class="btn-order">Pre-order Now</button>
-        </div>
-      </section>
+          <div class="starts-order">
+            <div class="desc">Card issuance starts in March 2018</div>
+            <button class="btn-order">Pre-order Now</button>
+          </div>
+        </section>
 
-      <!-- Fourth section -->
-      <section class="section section-price">
-        <div class="price-card">
-          <div class="name-card">One Blackcatcard Standart</div>
-          <div class="cost-card"><span class="num">9</span>€/month</div>
-        </div>
+        <!-- Fourth section -->
+        <section class="section section-price">
+          <div class="price-card">
+            <div class="name-card">One Blackcatcard Standart</div>
+            <div class="cost-card"><span class="num">9</span>€/month</div>
+          </div>
 
-        <div class="free-services">
-          <div class="title">Free</div>
-          <ul class="services-list">
-            <li class="services-item">24/7 Customer Support</li>
-            <li class="services-item">Euro IBAN Account</li>
-            <li class="services-item">Global Express Delivery</li>
-            <li class="services-item">3 ATM Withdrawals Per Month</li>
-            <li class="services-item">Bank Transfers*<br>*7,000 €</li>
-          </ul>
-        </div>
-      </section>
+          <div class="free-services">
+            <div class="title">Free</div>
+            <ul class="services-list">
+              <li class="services-item">24/7 Customer Support</li>
+              <li class="services-item">Euro IBAN Account</li>
+              <li class="services-item">Global Express Delivery</li>
+              <li class="services-item">3 ATM Withdrawals Per Month</li>
+              <li class="services-item">Bank Transfers*<br>*7,000 €</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <!-- <footer class="footer">
       <div class="inner-footer">
         <div class="container">
-          <div class="logo-bottom">BLACKCATCARD</div>
+          <div class="logo-bottom">
+            <img src="images/logo_footer.svg">
+          </div>
           <div class="footer-top">
             <div class="footer-info-list">
               <div class="title">Pricing</div>
@@ -165,8 +190,18 @@
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
 
-    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/fullpage.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#fullpage').fullpage();
+      });
+    </script>
   </body>
 </html>
