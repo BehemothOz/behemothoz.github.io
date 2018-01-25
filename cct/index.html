@@ -8,6 +8,7 @@
     <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/fullpage.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
   </head>
   <body>
     <!--[if lte IE 9]>
@@ -38,7 +39,7 @@
 
         <!-- First section -->
         <section class="section section-card">
-          <div class="image-card">
+          <div class="image-card wow fadeIn" data-wow-delay="0.2s">
             <!-- <img src="images/card.png" class="card"> -->
             <picture>
               <source media="(min-width: 414px)" srcset="images/bcc-real@3x.png">
@@ -46,7 +47,7 @@
             </picture>
           </div>
 
-          <div class="line-wrapper">
+          <div class="line-wrapper wow fadeIn fadeInUp" data-wow-delay="0.2s">
             <div class="info-line main-line line-gray">
               <h2 class="title">Open bank account online in 5 minutes.</h2>
               <div class="tip">Passport or any photo ID are required.</div>
@@ -78,7 +79,7 @@
         <!-- Second section -->
         <section class="section section-interface">
           <div class="interface-tour view-left">
-            <div class="images">
+            <div class="images wow fadeIn fadeInLeft" data-wow-delay="0.2s">
               <!-- <img src="images/iphone1.png"> -->
               <picture>
                 <source media="(min-width: 414px)" srcset="images/iphone-1@3x.png">
@@ -86,14 +87,14 @@
               </picture>
             </div>
             <div class="interface-elements">
-              <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
+              <div class="element wow fadeIn" data-wow-delay="0.7s">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
                 <span class="arrow arrow-top"></span>
               </div>
-              <div class="element">Optional savings account in Swiss bank
-                <span class="arrow arrow-middle"></span>
+              <div class="element wow fadeIn" data-wow-delay="0.9s">Optional savings account in Swiss bank
+                <span class="arrow arrow-middle wow fadeIn"></span>
               </div>
-              <div class="element">Black cat in the app
-                <span class="arrow arrow-bottom"></span>
+              <div class="element wow fadeIn" data-wow-delay="1.1s">Black cat in the app
+                <span class="arrow arrow-bottom wow fadeIn"></span>
               </div>
             </div>
           </div>
@@ -102,7 +103,7 @@
         <!-- Third section -->
         <section class="section section-interface">
           <div class="interface-tour view-right">
-            <div class="images">
+            <div class="images wow fadeIn fadeInRight" data-wow-delay="0.2s">
               <!-- <img src="images/iphone2.png"> -->
               <picture>
                 <source media="(min-width: 414px)" srcset="images/iphone-2@3x.png">
@@ -110,21 +111,21 @@
               </picture>
             </div>
             <div class="interface-elements">
-              <div class="element">Card Limits management
+              <div class="element wow fadeIn" data-wow-delay="0.7s">Card Limits management
                 <span class="arrow arrow-top"></span>
               </div>
-              <div class="element">
+              <div class="element wow fadeIn" data-wow-delay="0.9s">
                 Black cat in the app
                 <span class="arrow arrow-middle"></span>
               </div>
-              <div class="element">
+              <div class="element wow fadeIn" data-wow-delay="1.1s">
                 Temporary card blocking
                 <span class="arrow arrow-right arrow-bottom"></span>
               </div>
             </div>
           </div>
 
-          <div class="starts-order">
+          <div class="starts-order wow fadeIn" data-wow-delay="1.2s">
             <div class="desc">Card issuance starts in March 2018</div>
             <button class="btn-order">Pre-order Now</button>
           </div>
@@ -132,12 +133,12 @@
 
         <!-- Fourth section -->
         <section class="section section-price">
-          <div class="price-card">
+          <div class="price-card wow fadeIn fadeInUp" data-wow-delay="0.2s">
             <div class="name-card">One Blackcatcard Standart</div>
             <div class="cost-card"><span class="num">9</span>€/month</div>
           </div>
 
-          <div class="free-services">
+          <div class="free-services wow fadeIn" data-wow-delay="0.5s">
             <div class="title">Free</div>
             <ul class="services-list">
               <li class="services-item">24/7 Customer Support</li>
@@ -198,10 +199,13 @@
     </script>
     <!-- <script src="js/main.js"></script> -->
     <script src="js/fullpage.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <script>
       $(document).ready(function() {
-        $('#fullpage').fullpage();
+        $('#fullpage').fullpage({scrollBar:true});
       });
+
+      new WOW().init();
     </script>
   </body>
 </html>
