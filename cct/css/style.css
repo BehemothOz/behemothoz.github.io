@@ -1022,20 +1022,7 @@ h1, h2, h3, p {
 }
 
 .footer {
-  height: 597px;
   padding-top: 140px;
-}
-
-@media screen and (min-width: 414px) {
-  .footer {
-    height: 671px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .footer {
-    height: 550px;
-  }
 }
 
 .footer .inner-footer {
