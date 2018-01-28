@@ -10,264 +10,200 @@
     <link href="css/fullpage.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="no-scroll">
     <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
 
-
-    <!-- <div class="preview-section"> -->
-      <!-- Header -->
-      <!-- <div class="header-clone">
-        <div class="cat-gif" style="background-image: url(images/cat.gif);"></div>
-      </div>
-      <header class="header">
-        <div class="container">
-          <img class="logo" src="images/logo.svg">
-        </div>
-      </header>
-    </div> -->
-
     <!-- Content -->
-    <!-- <div class="container"> -->
-      <div id="fullpage">
-        <div class="section">
-          <div class="preview-section">
-            <!-- Header -->
-            <div class="header-clone">
-              <div class="cat-gif" style="background-image: url(images/cat.gif);"></div>
+    <div id="fullpage">
+      <!-- Preview section -->
+      <div class="section">
+        <div class="preview-section">
+          <div class="header-clone">
+            <div class="cat-gif" style="background-image: url(images/cat.gif);"></div>
+          </div>
+          <header class="header">
+            <div class="container">
+              <img class="logo" src="images/logo.svg">
             </div>
-            <header class="header">
-              <div class="container">
-                <img class="logo" src="images/logo.svg">
-              </div>
-            </header>
+          </header>
+        </div>
+      </div>
+
+      <!-- First section -->
+      <section class="section section-card fp-auto-height-responsive">
+        <div class="container">
+          <div class="image-card">
+            <!-- <img src="images/card.png" class="card"> -->
+            <picture>
+              <source media="(min-width: 414px)" srcset="images/bcc-real@3x.png">
+              <img src="images/bcc-real@2x.png" class="card">
+            </picture>
+          </div>
+
+          <div class="line-wrapper">
+            <div class="info-line main-line line-gray">
+              <h2 class="title">Open bank account online in 5 minutes.</h2>
+              <div class="tip">Passport or any photo ID are required.</div>
+            </div>
+
+            <div class="info-line main-line line-gray">
+              <h2 class="title">Payment card issuance in 24 h*</h2>
+              <div class="tip">*upon verification</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Free instant payments between Blackcatcard users</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Currency exchange</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Cryptowallet</div>
+            </div>
+
+            <div class="info-line sub-line">
+              <div class="info-title">Cashback</div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- First section -->
-        <section class="section section-card fp-auto-height-responsive">
-          <div class="container">
-            <div class="image-card">
-              <!-- <img src="images/card.png" class="card"> -->
+      <!-- Second section -->
+      <section class="section section-interface fp-auto-height-responsive">
+        <div class="container">
+          <div class="interface-tour view-left">
+            <div class="images">
+              <!-- <img src="images/iphone1.png"> -->
               <picture>
-                <source media="(min-width: 414px)" srcset="images/bcc-real@3x.png">
-                <img src="images/bcc-real@2x.png" class="card">
+                <source media="(min-width: 414px)" srcset="images/iphone-1@3x.png">
+                <img src="images/iphone-1@2x.png" class="card">
               </picture>
             </div>
-
-            <div class="line-wrapper">
-              <div class="info-line main-line line-gray">
-                <h2 class="title">Open bank account online in 5 minutes.</h2>
-                <div class="tip">Passport or any photo ID are required.</div>
+            <div class="interface-elements">
+              <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
+                <span class="arrow arrow-top"></span>
               </div>
-
-              <div class="info-line main-line line-gray">
-                <h2 class="title">Payment card issuance in 24 h*</h2>
-                <div class="tip">*upon verification</div>
+              <div class="element">Optional savings account in Swiss bank
+                <span class="arrow arrow-middle wow fadeIn"></span>
               </div>
-
-              <div class="info-line sub-line">
-                <div class="info-title">Free instant payments between Blackcatcard users</div>
-              </div>
-
-              <div class="info-line sub-line">
-                <div class="info-title">Currency exchange</div>
-              </div>
-
-              <div class="info-line sub-line">
-                <div class="info-title">Cryptowallet</div>
-              </div>
-
-              <div class="info-line sub-line">
-                <div class="info-title">Cashback</div>
+              <div class="element">Black cat in the app
+                <span class="arrow arrow-bottom wow fadeIn"></span>
               </div>
             </div>
-          </div>
-        </section>
-
-        <!-- Second section -->
-        <section class="section section-interface fp-auto-height-responsive">
-          <div class="container">
-            <div class="interface-tour view-left">
-              <div class="images">
-                <!-- <img src="images/iphone1.png"> -->
-                <picture>
-                  <source media="(min-width: 414px)" srcset="images/iphone-1@3x.png">
-                  <img src="images/iphone-1@2x.png" class="card">
-                </picture>
-              </div>
-              <div class="interface-elements">
-                <div class="element">Additional Cardholders: <span>add your partner, a family member or friend to your account.</span>
-                  <span class="arrow arrow-top"></span>
-                </div>
-                <div class="element">Optional savings account in Swiss bank
-                  <span class="arrow arrow-middle wow fadeIn"></span>
-                </div>
-                <div class="element">Black cat in the app
-                  <span class="arrow arrow-bottom wow fadeIn"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Third section -->
-        <section class="section section-interface fp-auto-height-responsive">
-          <div class="container">
-            <div class="interface-tour view-right">
-              <div class="images">
-                <!-- <img src="images/iphone2.png"> -->
-                <picture>
-                  <source media="(min-width: 414px)" srcset="images/iphone-2@3x.png">
-                  <img src="images/iphone-2@2x.png" class="card">
-                </picture>
-              </div>
-              <div class="interface-elements">
-                <div class="element">Card Limits management
-                  <span class="arrow arrow-top"></span>
-                </div>
-                <div class="element">
-                  Black cat in the app
-                  <span class="arrow arrow-middle"></span>
-                </div>
-                <div class="element">
-                  Temporary card blocking
-                  <span class="arrow arrow-right arrow-bottom"></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="starts-order">
-              <div class="desc">Card issuance starts in March 2018</div>
-              <button class="btn-order">Pre-order Now</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Fourth section -->
-        <section class="section section-price fp-auto-height-responsive">
-          <div class="container">
-            <div class="price-card">
-              <div class="name-card">One Blackcatcard Standart</div>
-              <div class="cost-card"><span class="num">9</span>€/month</div>
-            </div>
-
-            <div class="free-services">
-              <div class="title">Free</div>
-              <ul class="services-list">
-                <li class="services-item">24/7 Customer Support</li>
-                <li class="services-item">Euro IBAN Account</li>
-                <li class="services-item">Global Express Delivery</li>
-                <li class="services-item">3 ATM Withdrawals Per Month</li>
-                <li class="services-item">Bank Transfers*<br>*7,000 €</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- <section class="section"> -->
-          <footer class="footer section section-footer">
-            <div class="inner-footer">
-              <div class="container">
-                <div class="logo-bottom">
-                  <img src="images/logo_footer.svg">
-                </div>
-                <div class="footer-top">
-                  <div class="footer-info-list">
-                    <div class="title">Pricing</div>
-                    <div class="footer-info-item">
-                      <a href="">FAQ</a>
-                    </div>
-                  </div>
-                  <div class="footer-info-list">
-                    <div class="title">Company</div>
-                    <div class="footer-info-item">
-                      <a href="">About</a>
-                    </div>
-                    <div class="footer-info-item">
-                      <a href="">Contacts</a>
-                    </div>
-                  </div>
-                  <div class="footer-info-list">
-                    <div class="title">Terms & Conditions</div>
-                  </div>
-                </div>
-                <div class="bottom-footer">
-                  <div class="copyright">Copyright (c) 2017 Blackcatcard</div>
-                  <ul class="docs-list">
-                    <li><a class="docs-link" href="">Legal Agreements</a></li>
-                    <li><a class="docs-link" href="">Privacy Policy</a></li>
-                    <li><a class="docs-link" href="">Fair Usage</a></li>
-                  </ul>
-                  <p class="reg">Papaya Ltd is Licensed by the Malta Financial Services Authority as an Electronic Money Institution (EMI) Registration number C55146.</p>
-                </div>
-              </div>
-            </div>
-          </footer>
-        <!-- </section> -->
-
-      </div>
-    <!-- </div> -->
-
-    <!-- Footer -->
-    <!-- <footer class="footer">
-      <div class="inner-footer">
-        <div class="container">
-          <div class="logo-bottom">
-            <img src="images/logo_footer.svg">
-          </div>
-          <div class="footer-top">
-            <div class="footer-info-list">
-              <div class="title">Pricing</div>
-              <div class="footer-info-item">
-                <a href="">FAQ</a>
-              </div>
-            </div>
-            <div class="footer-info-list">
-              <div class="title">Company</div>
-              <div class="footer-info-item">
-                <a href="">About</a>
-              </div>
-              <div class="footer-info-item">
-                <a href="">Contacts</a>
-              </div>
-            </div>
-            <div class="footer-info-list">
-              <div class="title">Terms & Conditions</div>
-            </div>
-          </div>
-          <div class="bottom-footer">
-            <div class="copyright">Copyright (c) 2017 Blackcatcard</div>
-            <ul class="docs-list">
-              <li><a class="docs-link" href="">Legal Agreements</a></li>
-              <li><a class="docs-link" href="">Privacy Policy</a></li>
-              <li><a class="docs-link" href="">Fair Usage</a></li>
-            </ul>
-            <p class="reg">Papaya Ltd is Licensed by the Malta Financial Services Authority as an Electronic Money Institution (EMI) Registration number C55146.</p>
           </div>
         </div>
-      </div>
-    </footer> -->
+      </section>
+
+      <!-- Third section -->
+      <section class="section section-interface fp-auto-height-responsive">
+        <div class="container">
+          <div class="interface-tour view-right">
+            <div class="images">
+              <!-- <img src="images/iphone2.png"> -->
+              <picture>
+                <source media="(min-width: 414px)" srcset="images/iphone-2@3x.png">
+                <img src="images/iphone-2@2x.png" class="card">
+              </picture>
+            </div>
+            <div class="interface-elements">
+              <div class="element">Card Limits management
+                <span class="arrow arrow-top"></span>
+              </div>
+              <div class="element">
+                Black cat in the app
+                <span class="arrow arrow-middle"></span>
+              </div>
+              <div class="element">
+                Temporary card blocking
+                <span class="arrow arrow-right arrow-bottom"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="starts-order">
+            <div class="desc">Card issuance starts in March 2018</div>
+            <button class="btn-order">Pre-order Now</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fourth section -->
+      <section class="section section-price fp-auto-height-responsive">
+        <div class="container">
+          <div class="price-card">
+            <div class="name-card">One Blackcatcard Standart</div>
+            <div class="cost-card"><span class="num">9</span>€/month</div>
+          </div>
+
+          <div class="free-services">
+            <div class="title">Free</div>
+            <ul class="services-list">
+              <li class="services-item">24/7 Customer Support</li>
+              <li class="services-item">Euro IBAN Account</li>
+              <li class="services-item">Global Express Delivery</li>
+              <li class="services-item">3 ATM Withdrawals Per Month</li>
+              <li class="services-item">Bank Transfers*<br>*7,000 €</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer section section-footer">
+        <div class="inner-footer">
+          <div class="container footer-container">
+            <div class="logo-bottom">
+              <img src="images/logo_footer.svg">
+            </div>
+            <div class="footer-top">
+              <div class="footer-info-list">
+                <div class="title">Pricing</div>
+                <div class="footer-info-item">
+                  <a href="">FAQ</a>
+                </div>
+              </div>
+              <div class="footer-info-list">
+                <div class="title">Company</div>
+                <div class="footer-info-item">
+                  <a href="">About</a>
+                </div>
+                <div class="footer-info-item">
+                  <a href="">Contacts</a>
+                </div>
+              </div>
+              <div class="footer-info-list">
+                <div class="title">Terms & Conditions</div>
+              </div>
+            </div>
+            <div class="bottom-footer">
+              <div class="copyright">Copyright (c) 2017 Blackcatcard</div>
+              <ul class="docs-list">
+                <li><a class="docs-link" href="">Legal Agreements</a></li>
+                <li><a class="docs-link" href="">Privacy Policy</a></li>
+                <li><a class="docs-link" href="">Fair Usage</a></li>
+              </ul>
+              <p class="reg">Papaya Ltd is Licensed by the Malta Financial Services Authority as an Electronic Money Institution (EMI) Registration number C55146.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous">
     </script>
-    <script src="js/main.js"></script>
     <script src="js/fullpage.min.js"></script>
+    <script src="js/main.js"></script>
+    
     <script src="js/wow.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('#fullpage').fullpage({
-          scrollBar:true,
-          // paddingTop: '140px',
-          verticalCentered: false,
-          // autoScrolling: true,
-          scrollOverflowReset: false,
-          responsiveHeight: 500,
-        });
-      });
+      
 
       new WOW().init();
     </script>

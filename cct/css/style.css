@@ -166,6 +166,10 @@ body {
   overflow-x: hidden;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 .container {
   position: relative;
   margin: 0 auto;
@@ -182,12 +186,12 @@ body {
 
 @media screen and (min-width: 768px) {
   .container {
-    width: 600px;
+    width: 515px;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .container {
+  .container.footer-container {
     width: 992px;
   }
 }
@@ -239,16 +243,9 @@ h1, h2, h3, p {
   height: 100vh;
 }
 
-@media screen and (min-width: 414px) {
-  .preview-section {
-    height: 736px;
-  }
-}
-
 @media screen and (orientation: landscape) and (min-width: 414px) {
   .preview-section {
     height: 100vh;
-    max-height: 736px;
   }
 }
 
@@ -268,7 +265,7 @@ h1, h2, h3, p {
   }
 }
 
-@media screen and (min-width: 414px) {
+@media screen and (min-width: 768px) {
   .preview-section .header-clone {
     height: 128px;
     margin-top: -64px;
@@ -359,10 +356,19 @@ h1, h2, h3, p {
   margin-bottom: 15px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .section-card .image-card {
-    float: left;
-    width: 400px;
+    width: 355px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section-card .image-card {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 
@@ -373,11 +379,17 @@ h1, h2, h3, p {
   height: auto;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .section-card .line-wrapper {
-    float: left;
-    width: calc(100% - 400px);
-    padding-left: 30px;
+    width: 355px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section-card .line-wrapper {
+    width: 100%;
   }
 }
 
@@ -393,29 +405,20 @@ h1, h2, h3, p {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .section-card .info-line {
-    text-align: left;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section-card .info-line {
+    padding: 14px;
   }
 }
 
 .section-card .info-line.line-gray {
   background-color: #f3f3f3;
-}
-
-@media screen and (min-width: 992px) {
-  .section-card .info-line.line-gray {
-    background-color: transparent;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .section-card .main-line {
-    padding-bottom: 0;
-  }
-  .section-card .main-line:first-of-type {
-    padding-top: 0;
-  }
 }
 
 .section-card .main-line .title {
@@ -447,6 +450,12 @@ h1, h2, h3, p {
   padding-bottom: 0;
 }
 
+@media screen and (min-width: 768px) {
+  .section-card .sub-line {
+    padding-top: 8px;
+  }
+}
+
 .section-card .sub-line .info-title {
   font-size: 12px;
   letter-spacing: 1px;
@@ -456,6 +465,12 @@ h1, h2, h3, p {
 @media screen and (min-width: 414px) {
   .section-card .sub-line .info-title {
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-card .sub-line .info-title {
+    font-size: 13px;
   }
 }
 
@@ -478,7 +493,7 @@ h1, h2, h3, p {
 
 @media screen and (min-width: 768px) {
   .section-interface .interface-tour .images {
-    width: 220px;
+    width: 200px;
   }
 }
 
@@ -498,13 +513,7 @@ h1, h2, h3, p {
 
 @media screen and (min-width: 768px) {
   .section-interface .interface-tour .interface-elements {
-    width: calc(100% - 220px);
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .section-interface .interface-tour.view-left {
-    padding-left: 100px;
+    width: calc(100% - 200px);
   }
 }
 
@@ -528,12 +537,6 @@ h1, h2, h3, p {
   .section-interface .interface-tour.view-left .interface-elements {
     padding-top: 40px;
     padding-left: 40px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .section-interface .interface-tour.view-left .interface-elements {
-    padding-right: 280px;
   }
 }
 
@@ -670,12 +673,6 @@ h1, h2, h3, p {
   }
 }
 
-@media screen and (min-width: 992px) {
-  .section-interface .interface-tour.view-right {
-    padding-right: 100px;
-  }
-}
-
 .section-interface .interface-tour.view-right .images {
   float: right;
 }
@@ -695,12 +692,6 @@ h1, h2, h3, p {
 @media screen and (min-width: 768px) {
   .section-interface .interface-tour.view-right .interface-elements {
     padding-top: 98px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .section-interface .interface-tour.view-right .interface-elements {
-    padding-left: 285px;
   }
 }
 
@@ -878,7 +869,7 @@ h1, h2, h3, p {
 
 @media screen and (min-width: 768px) {
   .section-interface .starts-order {
-    margin-top: 50px;
+    margin-top: 16px;
   }
 }
 
@@ -1037,12 +1028,6 @@ h1, h2, h3, p {
 .footer .inner-footer {
   width: 100%;
   background-color: #f3f3f3;
-}
-
-@media screen and (min-width: 768px) {
-  .footer .inner-footer {
-    height: 100%;
-  }
 }
 
 @media screen and (min-width: 992px) {
