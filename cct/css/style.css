@@ -1034,11 +1034,8 @@ h1, h2, h3, p {
   }
 }
 
-.footer {
-  width: 100%;
-}
-
 .footer .inner-footer {
+  width: 100%;
   background-color: #f3f3f3;
 }
 
