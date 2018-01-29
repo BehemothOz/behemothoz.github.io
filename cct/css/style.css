@@ -200,13 +200,13 @@ body.no-scroll {
 .section-interface,
 .section-price,
 .section-footer {
-  padding-top: 96px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-top: 96px;
 }
 
 .section-footer {
@@ -235,6 +235,24 @@ h1, h2, h3, p {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+.btn-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin-left: -13px;
+  background: url("../images/arrow-down.svg") no-repeat center;
+  background-size: contain;
+  border: none;
+  outline: none;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 0 0 -12px;
+      -ms-transform-origin: 0 0 -12px;
+          transform-origin: 0 0 -12px;
 }
 
 .preview-section {

@@ -2745,6 +2745,40 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /* ////////////////////////////////////////////// */
 
+.animArrowDown {
+  animation-name: arrowDown;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes arrowDown {
+  0% {
+    transform: translate3d(0, 0, 10px) rotateX(37deg);
+    opacity: 0;
+  }
+
+  20% {
+      transform: translate3d(0, 0, 10px) rotateX(0);
+      opacity: 1;
+  }
+
+  60% {
+      transform: translate3d(0, 0, 10px) rotateX(0);
+      opacity: 1;
+  }
+
+  80% {
+      transform: translate3d(0, 0, 10px) rotateX(0);
+      opacity: 1;
+  }
+
+  100% {
+      transform: translate3d(0, 0, 10px) rotateX(-45deg);
+      opacity: 0;
+  }
+}
+
+
 /* .section-interface .images {
   opacity: 0;
   transition: opacity 1.3s ease;
