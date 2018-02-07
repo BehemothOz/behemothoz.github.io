@@ -71,7 +71,7 @@
 // Toggle Testing and Preview Screen
 // ----------------------------------
 
-(function() {
+;(function() {
   var geniusesItem = $('.geniuses-item'),
       screenTesting = $('.screen-testing'),
       screenPreview = $('.screen-preview');
@@ -94,14 +94,13 @@
   var screenTest = $('.screen-testing');
   var inputEmail = $('.input-email');
 
+  var scrollContainer = $('.scroll-container');
+  var questionsList = $('.questions-list');
+
   btnStart.on('click', function() {
-    if (inputEmail.value === '') {
-      console.log(0)
-    } else {
-      console.log(1);
-    }
-  
-    screenTest.addClass('active');
+    screenTest.addClass('testing-start');
+    scrollContainer.addClass('active');
+    questionsList.css({'display': 'block'});
   });
 
   inputEmail.on('input', function() {
@@ -111,5 +110,43 @@
       btnStart.prop('disabled', false);
     }
   })
+})();
+
+
+// ---------------
+// Scroll Testing Screen
+// ---------------
+
+(function() {
+  var fixedBlock = $('.top-fixed-real');
+  var fixedBlockHeight = fixedBlock.height();
+
+  function checkHeight(elem, height, scroll, controlPoint) {
+    var changeHeight = (height - (scroll - controlPoint)) - 36;
+
+    if (changeHeight >= 181) {
+      elem.height(changeHeight);
+    }
+  }
+
+  $('.scroll-container').scroll(function() {
+    var scrollTop = $(this).scrollTop();
+
+    if ( scrollTop >= 129 ) {
+      // fixedBlock.css({'position': 'fixed', 'top': '63px'});
+      fixedBlock.addClass('fixed');
+      // console.log( (fixedBlockHeight - (scrollTop - 129)) - 36)
+      // fixedBlock.height((fixedBlockHeight - (scrollTop - 129)) - 36);
+      checkHeight(fixedBlock, fixedBlockHeight, scrollTop, 129);
+      // 181 
+    }
+    
+    else {
+      fixedBlock.removeClass('fixed').css({'height': '240px'});
+      // fixedBlock.css({'position': 'absolute', 'top': '', 'height': '230px'})
+    }
+
+  });
+
 
 })();

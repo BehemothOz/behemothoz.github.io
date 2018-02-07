@@ -83,21 +83,30 @@
           </div>
     
           <div class="testing-wrap">
-            <div class="bg-heading">
-              <h2 class="testing-heading">ARE YOU IOS GENIUS?</h2>
-            </div>
-            <div class="bg-email">
-              <input class="input-email" type="text" name="email" placeholder="ENTER YOUR EMAIL">
-            </div>
-            <div class="bg-timer">
-              <div class="timer"><span>00:00</span></div>
-            </div>
-  
+            <div class="scroll-container">
+              <div class="bg-heading">
+                <h2 class="testing-heading">ARE YOU IOS GENIUS?</h2>
+              </div>
+              <div class="bg-email">
+                <input class="input-email" type="text" name="email" placeholder="ENTER YOUR EMAIL">
+              </div>
 
-            <div class="center">
-              <div class="title">TEST</div>
+              <!-- fixed with scrolling block -->
+              <div class="top-fixed top-fixed-fake">
+                <div class="top-fixed top-fixed-real">
+                  <div class="bg-timer">
+                    <div class="timer"><span>00:00</span></div>
+                  </div>
+                  <div class="middle-heading">
+                    <div class="progress-bar"></div>
+                    <div class="title">TEST</div>
+                  </div>
+                </div>
+              </div>
 
+              <!-- list of questions -->
               <ul class="questions-list">
+                <!-- question -->
                 <li class="question">
                   <div class="question-text">1. Which of the following statements are true for UIViewController?</div>
                   <ul class="answers-list">
@@ -117,14 +126,56 @@
                       </li>
                   </ul>
                 </li>
-              </ul>
 
+                <!-- question -->
+                <!-- <li class="question">
+                  <div class="question-text">1. Which of the following statements are true for UIViewController?</div>
+                  <ul class="answers-list">
+                    <li class="answer">
+                      <label class="label">
+                        <input class="input-answer" type="checkbox" value="0">
+                        <span class="fake-checkbox"></span>
+                        <span class="possible-answer">View controllers manage a hierarchy of views.</span>
+                      </label>
+                    </li>
+                    <li class="answer">
+                        <label class="label">
+                          <input class="input-answer" type="checkbox" value="0">
+                          <span class="fake-checkbox"></span>
+                          <span class="possible-answer">viewWillDisappear is called after animations are configured.</span>
+                        </label>
+                      </li>
+                  </ul>
+                </li> -->
+
+                <!-- question -->
+                <!-- <li class="question">
+                  <div class="question-text">1. Which of the following statements are true for UIViewController?</div>
+                  <ul class="answers-list">
+                    <li class="answer">
+                      <label class="label">
+                        <input class="input-answer" type="checkbox" value="0">
+                        <span class="fake-checkbox"></span>
+                        <span class="possible-answer">View controllers manage a hierarchy of views.</span>
+                      </label>
+                    </li>
+                    <li class="answer">
+                        <label class="label">
+                          <input class="input-answer" type="checkbox" value="0">
+                          <span class="fake-checkbox"></span>
+                          <span class="possible-answer">viewWillDisappear is called after animations are configured.</span>
+                        </label>
+                      </li>
+                  </ul>
+                </li> -->
+              </ul>
             </div>
-    
-    
+
+            <!-- button start and submit -->
             <div class="bg-button-start">
-              <button class="button button-start" disabled>START</button>
+              <button class="button button-start">START</button>
             </div>
+
           </div>
         </div>
       </div>
