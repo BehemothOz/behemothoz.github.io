@@ -223,7 +223,7 @@ body {
 
 .screen-testing {
   display: none;
-  padding: 55px 0 20px;
+  padding: 73px 0 20px;
 }
 
 @media screen and (max-width: 413px) {
@@ -465,7 +465,7 @@ body {
 }
 
 .screen-testing .logo-wrap {
-  margin-bottom: 35px;
+  margin-bottom: 60px;
   text-align: center;
 }
 
@@ -612,6 +612,13 @@ body {
   line-height: 44px;
   letter-spacing: 2.4px;
   color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 413px) {
+  .testing-wrap .bg-timer .timer span {
+    font-size: 22px;
+    letter-spacing: 0;
+  }
 }
 
 .testing-wrap .middle-heading {
