@@ -11,6 +11,7 @@
   var rectDownGeniuses = rectDown.find('.geniuses-list');
   var rectDownDesc = rectDown.find('.description-list');
   var rectDownDescItem = rectDownDesc.find('.desc');
+  var dinamicText = $('.dinamic-text');
 
 
   // Обработчик события клика для toggleItems
@@ -62,8 +63,34 @@
 
   // Событие клика для rectTop
   rectTop.on('click', function() {
-    $(this).toggleClass('active');
-  })
+    if ( !$(this).hasClass('active') ) {
+      $(this).addClass('active').addClass('no-touch');
+      startDinamicText(this);
+    } else {
+      $(this).removeClass('active');
+      dinamicText.html('');
+    }
+  });
+
+  // Эффект печатающегося текста
+  function startDinamicText(parent) {
+    var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
+
+    // var str = '<b>Параметры сборки</b>',
+    
+	  strLength = str.length,
+    counter = 0,
+    timerId;
+
+    dinamicText.html('');
+    
+	  timerId = setInterval(function () {
+      dinamicText.html( dinamicText.html() + str[counter++] );
+
+	    if (counter == strLength) clearInterval(timerId), $(parent).removeClass('no-touch');
+	  }, 100);
+  };
+
 })();
 
 

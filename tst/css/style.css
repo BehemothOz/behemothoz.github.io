@@ -301,10 +301,26 @@ body {
   border-image-source: linear-gradient(123deg, #3b7074, #5a9dd8 66%, #74bcbf);
   border-image-slice: 1;
   transition: all 0.3s ease;
+  padding: 20px 20px 65px;
 }
 
 .rectangle-dinamic-up.active {
   top: -105px;
+}
+
+.rectangle-dinamic-up.no-touch {
+  pointer-events: none;
+}
+
+.rectangle-dinamic-up .dinamic-text {
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 1px;
+  white-space: pre-wrap;
+}
+
+.rectangle-dinamic-up .dinamic-text b {
+  color: #00d9d9;
 }
 
 .rectangle-static {
