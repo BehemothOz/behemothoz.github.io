@@ -191,8 +191,9 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url("../image/bg.jpg") no-repeat center;
-  background-size: cover;
+  background: url("../image/bg.jpg") no-repeat center top;
+  background-size: 100%;
+  background-color: #0e3544;
 }
 
 .container {
@@ -200,6 +201,13 @@ body {
   width: 414px;
   margin: 0 auto;
   padding: 0 22px;
+}
+
+@media screen and (max-width: 413px) {
+  .container {
+    width: 320px;
+    padding: 0 5px;
+  }
 }
 
 .single-container {
@@ -233,6 +241,12 @@ body {
   z-index: 0;
 }
 
+@media screen and (max-width: 413px) {
+  .screen-preview .logo-wrap {
+    width: 170px;
+  }
+}
+
 .screen-preview .logo {
   width: 100%;
 }
@@ -264,6 +278,13 @@ body {
   color: #fff;
 }
 
+@media screen and (max-width: 413px) {
+  .toggle-panel .toggle-item {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+}
+
 .rectangle-dinamic-up {
   position: absolute;
   top: 0;
@@ -287,10 +308,9 @@ body {
 }
 
 .rectangle-dynamic-down {
-  position: absolute;
-  top: 37%;
-  left: 15px;
-  right: 15px;
+  position: relative;
+  top: -147px;
+  margin: 0 15px;
   height: 210px;
   border-width: 0 2px 2px;
   border-style: solid;
@@ -300,7 +320,7 @@ body {
 }
 
 .rectangle-dynamic-down.active {
-  top: 82%;
+  top: -45px;
   border-width: 2px;
 }
 
@@ -310,6 +330,12 @@ body {
   top: 0;
   width: 70px;
   height: 2px;
+}
+
+@media screen and (max-width: 413px) {
+  .rectangle-dynamic-down.broken-border::after, .rectangle-dynamic-down.broken-border::before {
+    width: 55px;
+  }
 }
 
 .rectangle-dynamic-down.broken-border::after {
@@ -327,6 +353,12 @@ body {
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.2);
   transition: opacity 0.3s ease;
+}
+
+@media screen and (max-width: 413px) {
+  .description-list {
+    padding: 23px;
+  }
 }
 
 .description-list.hide {
@@ -351,6 +383,12 @@ body {
 
 .description-list .desc.visible {
   display: block;
+}
+
+@media screen and (max-width: 413px) {
+  .description-list .desc {
+    font-size: 14px;
+  }
 }
 
 .geniuses-list {
@@ -414,6 +452,12 @@ body {
   text-transform: uppercase;
 }
 
+@media screen and (max-width: 413px) {
+  .geniuses-list .geniuses-item span {
+    font-size: 11px;
+  }
+}
+
 .screen-testing .logo-wrap {
   margin-bottom: 60px;
   text-align: center;
@@ -430,7 +474,10 @@ body {
 
 .testing-wrap .scroll-container {
   position: relative;
-  outline: 2px solid red;
+}
+
+.testing-wrap .scroll-container::-webkit-scrollbar {
+  width: 0;
 }
 
 .testing-wrap .scroll-container.active {
@@ -446,10 +493,6 @@ body {
   height: 276px;
 }
 
-.testing-wrap .top-fixed.top-fixed-fake {
-  background-color: rgba(255, 69, 0, 0.3);
-}
-
 .testing-wrap .top-fixed.top-fixed-real {
   position: absolute;
   width: 100%;
@@ -460,6 +503,8 @@ body {
   position: fixed;
   top: 63px;
   width: 366px;
+  background-color: #4ba8af;
+  z-index: 50;
 }
 
 .testing-wrap .bg-heading {
@@ -553,7 +598,6 @@ body {
           align-items: center;
   height: calc(100% - 59px);
   background-color: rgba(255, 255, 255, 0.2);
-  outline: 1px solid black;
 }
 
 .testing-wrap .middle-heading .progress-bar {
@@ -596,6 +640,16 @@ body {
 
 .questions-list {
   display: none;
+  padding: 5px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.questions-list .question {
+  margin-bottom: 20px;
+}
+
+.questions-list .question:last-of-type {
+  margin-bottom: 0;
 }
 
 .questions-list .question-text {
@@ -606,7 +660,7 @@ body {
 }
 
 .questions-list .answers-list {
-  padding: 10px 50px;
+  padding: 10px 30px;
 }
 
 .questions-list .answer {
@@ -662,11 +716,6 @@ body {
   padding-left: 10px;
   font-size: 13px;
   color: #fff;
-}
-
-.questions-list {
-  height: 1500px;
-  background-color: blue;
 }
 
 .screen-testing.testing-start {
