@@ -120,8 +120,10 @@
 (function() {
   var fixedBlock = $('.top-fixed-real');
   var fixedBlockHeight = fixedBlock.height();
+  var scrollContainer = $('.scroll-container');
+  var positionTop;
 
-  function checkHeight(elem, height, scroll, controlPoint) {
+  function setHeight(elem, height, scroll, controlPoint) {
     var changeHeight = (height - (scroll - controlPoint)) - 36;
 
     if (changeHeight >= 181) {
@@ -129,23 +131,28 @@
     }
   }
 
-  $('.scroll-container').scroll(function() {
+  scrollContainer.scroll(function() {
     var scrollTop = $(this).scrollTop();
+    positionTop = $(this).offset().top - $(window).scrollTop();
 
     if ( scrollTop >= 129 ) {
-      // fixedBlock.css({'position': 'fixed', 'top': '63px'});
-      fixedBlock.addClass('fixed');
-      // console.log( (fixedBlockHeight - (scrollTop - 129)) - 36)
-      // fixedBlock.height((fixedBlockHeight - (scrollTop - 129)) - 36);
-      checkHeight(fixedBlock, fixedBlockHeight, scrollTop, 129);
-      // 181 
+      fixedBlock.addClass('fixed').css({'top': positionTop });
+      setHeight(fixedBlock, fixedBlockHeight, scrollTop, 129);
+      
     }
     
     else {
-      fixedBlock.removeClass('fixed').css({'height': '240px'});
+      fixedBlock.removeClass('fixed').css({'height': '240px', 'top': ''});
       // fixedBlock.css({'position': 'absolute', 'top': '', 'height': '230px'})
     }
 
+  });
+
+  $(window).on('scroll', function() {
+    if ( fixedBlock.hasClass('fixed') ) {
+      let x = $('.scroll-container').offset().top - $(window).scrollTop();
+      fixedBlock.css({'top': x});
+    }
   });
 
 

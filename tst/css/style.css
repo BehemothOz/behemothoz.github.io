@@ -524,6 +524,12 @@ body {
   z-index: 50;
 }
 
+@media screen and (max-width: 413px) {
+  .testing-wrap .top-fixed.top-fixed-real.fixed {
+    width: 306px;
+  }
+}
+
 .testing-wrap .bg-heading {
   padding: 35px 20px 30px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -697,6 +703,12 @@ body {
 
 .questions-list .answers-list {
   padding: 10px 30px;
+}
+
+@media screen and (max-width: 413px) {
+  .questions-list .answers-list {
+    padding: 10px 20px;
+  }
 }
 
 .questions-list .answer {
