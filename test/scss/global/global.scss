@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  min-width: 320px;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  font-family: "Avenir";
+  font-size: 16px;
+  font-weight: 400;
+  color: $black;
+  // background-color: $white;
+  overflow-x: hidden;
+}
+
+.single-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  // background: url('../image/bg.jpg') no-repeat center;
+  // background-size: cover;
+  background: url('../image/bg.jpg') no-repeat center top;
+  background-size: 100%;
+  background-color: $blue-dark;
+
+  @media screen and (min-width: 768px) {
+    background: url('../image/bg_web.jpg') no-repeat center;
+    background-size: cover;
+  }
+}
+
+.container {
+  position: relative;
+  width: 414px; // -- descktop 490px
+  margin: 0 auto;
+  padding: 0 22px;
+
+  @media screen and (max-width: $width-xs) {
+    width: 320px;
+    padding: 0 5px;
+  }
+}
+
+.single-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.screen-preview {
+  padding: 133px 0 20px;
+  height: 100%;
+}
+
+.screen-testing {
+  display: none;
+  padding: 73px 0 20px;
+  // padding: 55px 0 20px;
+
+  @media screen and (max-width: $width-xs) {
+    padding-top: 40px;
+  }
+}
+
+// IE tip
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
