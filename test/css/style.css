@@ -492,8 +492,7 @@ body {
 }
 
 .testing-wrap .scroll-container.active {
-  height: 515px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .testing-wrap .scroll-container.active .top-fixed {
@@ -665,7 +664,13 @@ body {
   display: none;
   padding: 5px 20px;
   background-color: #6868f7;
-  height: 1500px;
+  height: 334px;
+  max-height: 146px;
+  overflow-y: auto;
+}
+
+.questions-list::-webkit-scrollbar {
+  width: 0;
 }
 
 .questions-list .question {

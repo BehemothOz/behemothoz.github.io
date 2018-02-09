@@ -155,6 +155,9 @@
   var qwerty = $('.qwerty');
   var fixedFake = $('.top-fixed-fake');
 
+  var q = $('.questions-list');
+  var qwerty2 = $('.qwerty2');
+
   // function setHeight(elem, height, scroll, controlPoint) {
   //   var changeHeight = (height - (scroll - controlPoint)) - 36;
 
@@ -163,24 +166,7 @@
   //   }
   // }
 
-  scrollContainer.scroll(function() {
-    var scrollTop = $(this).scrollTop();
-    // console.log(scrollTop)
-
-    // positionTop = $(this).offset().top - $(window).scrollTop();
-
-    if ( scrollTop >= 129 ) {
-      fixedBlock.addClass('fixed');
-      // setHeight(fixedBlock, fixedBlockHeight, scrollTop, 129);
-      
-    }
-    
-    else {
-      fixedBlock.removeClass('fixed');
-      // fixedBlock.css({'position': 'absolute', 'top': '', 'height': '230px'})
-    }
-    
-  })
+  
 
   // scrollContainer.scroll(function() {
   //   var scrollTop = $(this).scrollTop();
@@ -205,6 +191,40 @@
   //     fixedBlock.css({'top': x});
   //   }
   // });
+
+  // 334 
+
+
+    q.scroll(function() {
+      var height =  $(this).height();
+      var scroll = $(this).scrollTop();
+      var maxHeight;
+      var mrt;
+      
+      if (scroll == 0) {
+        maxHeight = 146;
+      } else if (scroll > 0) {
+        // console.log(146 * ( ( (scroll + 334) * 100 ) / 334 ) / 100 );
+
+        var x = 146 * ( ( (scroll + 278) * 100 ) / 278 ) / 100;
+        // console.log((( (scroll + 334) * 100 ) / 334 ) / 100)
+
+        console.log(146 - x)
+        mrt = 146 - x <= -130 ? -130 : 146 - x;
+        maxHeight = x >= 278 ? 278 : x ;
+      } else {
+        // maxHeight = 
+      }
+
+      q.css({
+        'max-height': maxHeight + "px"
+      });
+
+      qwerty2.css({
+        'margin-top': mrt + "px"
+      });
+
+    });
 
 
 })();
