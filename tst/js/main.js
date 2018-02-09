@@ -210,14 +210,18 @@
       // fixedBlock.css({'position': 'absolute', 'top': '', 'height': '230px'})
     }
 
+    if ( scrollTop == 0 ) {
+      q.removeClass('fixed');
+    }
+
   });
 
-  $(window).on('scroll', function() {
-    if ( fixedBlock.hasClass('fixed') ) {
-      let x = $('.scroll-container').offset().top - $(window).scrollTop();
-      fixedBlock.css({'top': x});
-    }
-  });
+  // $(window).on('scroll', function() {
+  //   if ( fixedBlock.hasClass('fixed') ) {
+  //     let x = $('.scroll-container').offset().top - $(window).scrollTop();
+  //     fixedBlock.css({'top': x});
+  //   }
+  // });
 
   // 334 
 

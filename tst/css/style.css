@@ -668,10 +668,12 @@ body {
   background-color: #6868f7;
   height: 1500px;
   overflow-y: auto;
+  pointer-events: none;
 }
 
 .questions-list.fixed {
   height: 274px;
+  pointer-events: all;
   overflow-y: scroll;
 }
 
