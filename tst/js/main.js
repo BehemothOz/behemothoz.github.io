@@ -94,9 +94,9 @@
 
   // Эффект печатающегося текста
   function startDinamicText(parent) {
-    // var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
+    var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
 
-    var str = '<b>Параметры сборки</b>',
+    // var str = '<b>Параметры сборки</b>',
     
 	  strLength = str.length,
     counter = 0,

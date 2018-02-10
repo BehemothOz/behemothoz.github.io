@@ -314,13 +314,13 @@ body {
   top: 0;
   width: 100%;
   height: 232px;
+  padding: 20px 20px 65px;
   border-width: 2px;
   border-style: solid;
   border-image-source: linear-gradient(123deg, #3b7074, #5a9dd8 66%, #74bcbf);
   border-image-slice: 1;
   transition: top 0.3s ease;
   cursor: pointer;
-  padding: 20px 20px 65px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -339,12 +339,6 @@ body {
   bottom: 0;
   width: 15px;
   height: 2px;
-}
-
-@media screen and (max-width: 413px) {
-  .rectangle-dinamic-up.broken-border::after, .rectangle-dinamic-up.broken-border::before {
-    width: 55px;
-  }
 }
 
 .rectangle-dinamic-up.broken-border::after {
@@ -371,6 +365,12 @@ body {
   color: #fff;
   letter-spacing: 1px;
   white-space: pre-wrap;
+}
+
+@media screen and (max-width: 413px) {
+  .rectangle-dinamic-up .dinamic-text {
+    font-size: 14px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
