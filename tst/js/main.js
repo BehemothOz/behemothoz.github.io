@@ -176,40 +176,25 @@
   var fixedBlock = $('.top-fixed-real');
   var fixedBlockHeight = fixedBlock.height();
   var scrollContainer = $('.scroll-container');
-  var positionTop;
-
-  // function setHeight(elem, height, scroll, controlPoint) {
-  //   var changeHeight = (height - (scroll - controlPoint)) - 36;
-
-  //   if (changeHeight >= 181) {
-  //     elem.height(changeHeight);
-  //   }
-  // }
+  var fixedFake = $('.top-fixed-fake');
 
   scrollContainer.scroll(function() {
     var scrollTop = $(this).scrollTop();
-    // positionTop = $(this).offset().top - $(window).scrollTop();
 
     if ( scrollTop >= 129 ) {
       fixedBlock.addClass('fixed');
-      // fixedBlock.addClass('fixed').css({'top': positionTop });
-      // setHeight(fixedBlock, fixedBlockHeight, scrollTop, 129);
-      
+      fixedFake.css({'height': '0px'});
+      $('.testing-wrap').css({'padding-top': '240px'});
+      $(this).css({'height': '275px'});
     }
     
     else {
       fixedBlock.removeClass('fixed');
-      // fixedBlock.css({'position': 'absolute', 'top': '', 'height': '230px'})
+      fixedFake.css({'height': '240px'})
+      $('.testing-wrap').css({'padding-top': '0'})
+      $(this).css({'height': '515px'})
     }
 
   });
-
-  // $(window).on('scroll', function() {
-  //   if ( fixedBlock.hasClass('fixed') ) {
-  //     let x = $('.scroll-container').offset().top - $(window).scrollTop();
-  //     fixedBlock.css({'top': x});
-  //   }
-  // });
-
 
 })();

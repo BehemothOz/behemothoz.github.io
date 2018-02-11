@@ -117,7 +117,9 @@
                     </div>
                   </div>
                   <div class="middle-heading">
-                    <div class="progress-bar"></div>
+                    <div class="progress-bar">
+                      <div class="scale"></div>
+                    </div>
                     <div class="title">TEST</div>
                   </div>
                 </div>
@@ -126,19 +128,19 @@
               <!-- list of questions -->
               <ul class="questions-list">
                 <!-- question -->
-                <li class="question">
+                <li class="question" data-checked>
                   <div class="question-text">1. Which of the following statements are true for UIViewController?</div>
                   <ul class="answers-list">
                     <li class="answer">
                       <label class="label">
-                        <input class="input-answer" type="checkbox" value="0">
+                        <input class="input-answer" type="radio" name="answer-1" value="0">
                         <span class="fake-checkbox"></span>
                         <span class="possible-answer">View controllers manage a hierarchy of views.</span>
                       </label>
                     </li>
                     <li class="answer">
                         <label class="label">
-                          <input class="input-answer" type="checkbox" value="0">
+                          <input class="input-answer" type="radio" name="answer-1" value="1">
                           <span class="fake-checkbox"></span>
                           <span class="possible-answer">viewWillDisappear is called after animations are configured.</span>
                         </label>
@@ -147,19 +149,19 @@
                 </li>
 
                 <!-- question -->
-                <li class="question">
+                <li class="question" data-checked>
                   <div class="question-text">2. Explain the difference between copy and retain?</div>
                   <ul class="answers-list">
                     <li class="answer">
                       <label class="label">
-                        <input class="input-answer" type="checkbox" value="0">
+                        <input class="input-answer" type="radio" name="answer-2" value="0">
                         <span class="fake-checkbox"></span>
                         <span class="possible-answer">Choosing The Best solution for dev</span>
                       </label>
                     </li>
                     <li class="answer">
                         <label class="label">
-                          <input class="input-answer" type="checkbox" value="0">
+                          <input class="input-answer" type="radio" name="answer-2" value="1">
                           <span class="fake-checkbox"></span>
                           <span class="possible-answer">Retrain is almost the same thing</span>
                         </label>
@@ -168,19 +170,19 @@
                 </li>
 
                 <!-- question -->
-                <li class="question">
+                <li class="question" data-checked>
                   <div class="question-text">3. Which of the following statements are true for UIViewController?</div>
                   <ul class="answers-list">
                     <li class="answer">
                       <label class="label">
-                        <input class="input-answer" type="checkbox" value="0">
+                        <input class="input-answer" type="radio" name="answer-3" value="0">
                         <span class="fake-checkbox"></span>
                         <span class="possible-answer">View controllers manage a hierarchy of views.</span>
                       </label>
                     </li>
                     <li class="answer">
                         <label class="label">
-                          <input class="input-answer" type="checkbox" value="0">
+                          <input class="input-answer" type="radio" name="answer-3" value="1">
                           <span class="fake-checkbox"></span>
                           <span class="possible-answer">viewWillDisappear is called after animations are configured.</span>
                         </label>
@@ -189,19 +191,19 @@
                 </li>
 
                 <!-- question -->
-                <li class="question">
+                <li class="question" data-checked>
                   <div class="question-text">4. Explain the difference between copy and retain?</div>
                   <ul class="answers-list">
                     <li class="answer">
                       <label class="label">
-                        <input class="input-answer" type="checkbox" value="0">
+                        <input class="input-answer" type="radio" name="answer-4" value="0">
                         <span class="fake-checkbox"></span>
                         <span class="possible-answer">Choosing The Best solution for dev</span>
                       </label>
                     </li>
                     <li class="answer">
                         <label class="label">
-                          <input class="input-answer" type="checkbox" value="0">
+                          <input class="input-answer" type="radio" name="answer-4" value="1">
                           <span class="fake-checkbox"></span>
                           <span class="possible-answer">Retrain is almost the same thing</span>
                         </label>
@@ -210,19 +212,19 @@
                 </li>
 
                 <!-- question -->
-                <li class="question">
+                <li class="question" data-checked>
                   <div class="question-text">5. Which of the following statements are true for UIViewController?</div>
                   <ul class="answers-list">
                     <li class="answer">
                       <label class="label">
-                        <input class="input-answer" type="checkbox" value="0">
+                        <input class="input-answer" type="radio" name="answer-5" value="0">
                         <span class="fake-checkbox"></span>
                         <span class="possible-answer">View controllers manage a hierarchy of views.</span>
                       </label>
                     </li>
                     <li class="answer">
                         <label class="label">
-                          <input class="input-answer" type="checkbox" value="0">
+                          <input class="input-answer" type="radio" name="answer-5" value="1">
                           <span class="fake-checkbox"></span>
                           <span class="possible-answer">viewWillDisappear is called after animations are configured.</span>
                         </label>
@@ -244,6 +246,7 @@
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/timer.js"></script>
+    <script src="js/progress.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

@@ -641,7 +641,6 @@ body {
   position: absolute;
   top: 0;
   width: 366px;
-  background-color: #4ba8af;
   z-index: 50;
 }
 
@@ -808,6 +807,13 @@ body {
   width: 14px;
   height: 165px;
   background-color: rgba(0, 0, 0, 0.14);
+}
+
+.testing-wrap .middle-heading .progress-bar .scale {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: orangered;
 }
 
 .testing-wrap .middle-heading .title {
