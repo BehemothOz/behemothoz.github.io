@@ -125,8 +125,8 @@
 
   geniusesItem.each(function(index, elem) {
     $(this).on('click', function() {
-      screenTesting.css({'display': 'block'});
-      screenPreview.css({'display': 'none'});
+      screenTesting.show();
+      screenPreview.hide();
     })
   })
 })();
@@ -136,26 +136,35 @@
 // Testing Screen
 // ---------------
 
+// TODO УПРОСТИТЬ!
+
 (function() {
   var btnStart = $('.button-start');
+  var btnSubmit = $('.button-submit');
+
+
   var screenTest = $('.screen-testing');
   var inputEmail = $('.input-email');
 
   var scrollContainer = $('.scroll-container');
   var questionsList = $('.questions-list');
+  var displayTimer = $('.timer span');
 
   btnStart.on('click', function() {
     screenTest.addClass('testing-start');
     scrollContainer.addClass('active');
     questionsList.css({'display': 'block'});
 
-    if ($(window).width() >= 1200 ) {
-      $('.bg-heading').hide();
-      inputEmail.hide();
-    } else {
-      $('.bg-heading').show();
-      inputEmail.show();
-    }
+  
+    $(this).hide();
+    btnSubmit.show();
+
+
+    // Показать экран с вопросами
+    startTestingScreen();
+
+    // Старт таймера
+    startTimer(300, displayTimer);
   });
 
   inputEmail.on('input', function() {
@@ -172,29 +181,32 @@
 // Scroll Testing Screen
 // ---------------
 
-(function() {
-  var fixedBlock = $('.top-fixed-real');
-  var fixedBlockHeight = fixedBlock.height();
-  var scrollContainer = $('.scroll-container');
-  var fixedFake = $('.top-fixed-fake');
+// Старт экрана с вопросами
+function startTestingScreen() {
+  var headingBlock = $('.bg-heading'),
+      emailBlok = $('.bg-email');
 
-  scrollContainer.scroll(function() {
-    var scrollTop = $(this).scrollTop();
+  var fixingPoint = headingBlock.outerHeight() + emailBlok.outerHeight();
+  
+  $('.scroll-container').scroll(function() {
+    scrollQuestionsList(fixingPoint, this);
+  })
+};
 
-    if ( scrollTop >= 129 ) {
-      fixedBlock.addClass('fixed');
-      fixedFake.css({'height': '0px'});
-      $('.testing-wrap').css({'padding-top': '240px'});
-      $(this).css({'height': '275px'});
-    }
+// Скролл экрана с вопросами
+function scrollQuestionsList(fixingPoint, containerScroll) {
+  var fixedBlock = $('.top-fixed-real'),
+      testingWrap = $('.testing-wrap'),
+      scrollTop = $(containerScroll).scrollTop();
+
+  if ( scrollTop >= fixingPoint ) {
+    fixedBlock.addClass('fixed');
+    testingWrap.addClass('offset-scroll')//.addClass('qwerty');
+  }
     
-    else {
-      fixedBlock.removeClass('fixed');
-      fixedFake.css({'height': '240px'})
-      $('.testing-wrap').css({'padding-top': '0'})
-      $(this).css({'height': '515px'})
-    }
+  else {
+    fixedBlock.removeClass('fixed');
+    testingWrap.removeClass('offset-scroll')//.removeClass('qwerty');
+  }
+};
 
-  });
-
-})();

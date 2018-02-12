@@ -19,10 +19,3 @@ function startTimer(duration, display) {
       }
   }, 1000);
 }
-
-$(window).on('load', function() {
-  var fiveMinutes = 60 * 5,
-      display = $('.timer span');
-
-  startTimer(fiveMinutes, display);
-}) 

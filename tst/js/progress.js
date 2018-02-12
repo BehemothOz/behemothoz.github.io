@@ -25,16 +25,11 @@
         answerArray.push(check);
       }
     });
-
-    
-      
+  
     changeHeightProgressBar(answerArray.length);
   }
   
   function changeHeightProgressBar(count) {
     scale.css({'height': (100 / 5 ) * count + '%'});
-
-    console.log( (100 / 5 ) * count + '%' );
   };
-
 })();

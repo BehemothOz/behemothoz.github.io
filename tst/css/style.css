@@ -640,14 +640,7 @@ body {
 .testing-wrap .top-fixed.top-fixed-real.fixed {
   position: absolute;
   top: 0;
-  width: 366px;
   z-index: 50;
-}
-
-@media screen and (max-width: 413px) {
-  .testing-wrap .top-fixed.top-fixed-real.fixed {
-    width: 306px;
-  }
 }
 
 .testing-wrap .bg-heading {
@@ -802,18 +795,62 @@ body {
 
 .testing-wrap .middle-heading .progress-bar {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 20px;
   width: 14px;
-  height: 165px;
+  height: 155px;
   background-color: rgba(0, 0, 0, 0.14);
+}
+
+.testing-wrap .middle-heading .progress-bar .progress-bar-wrap {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  bottom: 0;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 30px;
+  height: 100%;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash {
+  position: absolute;
+  height: 14px;
+  margin-top: -7px;
+  font-size: 10px;
+  letter-spacing: 2.9px;
+  color: #fff;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash.dash-1 {
+  top: 80%;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash.dash-2 {
+  top: 60%;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash.dash-3 {
+  top: 40%;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash.dash-4 {
+  top: 20%;
+}
+
+.testing-wrap .middle-heading .progress-bar .scale-dash .dash.dash-5 {
+  top: 0;
 }
 
 .testing-wrap .middle-heading .progress-bar .scale {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: orangered;
+  background-color: #53c6cc;
 }
 
 .testing-wrap .middle-heading .title {
@@ -859,6 +896,28 @@ body {
 
 .testing-wrap .bg-button-start .button[disabled] {
   color: rgba(255, 255, 255, 0.2);
+}
+
+.testing-wrap .bg-button-start .button.button-submit {
+  display: none;
+}
+
+.testing-wrap.offset-scroll {
+  padding-top: 240px;
+}
+
+.testing-wrap.offset-scroll .scroll-container {
+  height: 275px;
+}
+
+@media screen and (min-width: 1200px) {
+  .testing-wrap.offset-scroll .scroll-container {
+    height: 222px;
+  }
+}
+
+.testing-wrap.offset-scroll .scroll-container .top-fixed-fake {
+  height: 0;
 }
 
 .questions-list {
