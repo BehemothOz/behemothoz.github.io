@@ -256,7 +256,7 @@ body {
   width: 196px;
   margin: 0 auto 50px;
   padding: 0 10px;
-  z-index: 0;
+  z-index: 100;
 }
 
 @media screen and (max-width: 413px) {
@@ -273,6 +273,7 @@ body {
 
 .screen-preview .logo {
   width: 100%;
+  cursor: pointer;
 }
 
 .toggle-panel {

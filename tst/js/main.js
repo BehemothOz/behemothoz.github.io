@@ -8,20 +8,28 @@
       rectDown = $('.rectangle-dynamic-down'),
       rectTop = $('.rectangle-dinamic-up');
   
-  var rectDownGeniuses = rectDown.find('.geniuses-list');
-  var rectDownDesc = rectDown.find('.description-list');
-  var rectDownDescItem = rectDownDesc.find('.desc');
-  var dinamicText = $('.dinamic-text');
+  var rectDownGeniuses = rectDown.find('.geniuses-list'),
+      rectDownDesc = rectDown.find('.description-list'),
+      rectDownDescItem = rectDownDesc.find('.desc'),
+      dinamicText = $('.dinamic-text'),
+      logo = $('.logo');
 
+  // Сделать активным или неактивным toggleItems
+  function makeEnabledToggleItem(item) {
+    if (item) {
+      $(item).toggleClass('enabled')
+             .siblings()
+             .removeClass('enabled');  
+    } else {
+      toggleItems.removeClass('enabled');
+    }
+  };
 
   // Обработчик события клика для toggleItems
   function toggleItem(index, item) {
-    $(item).toggleClass('enabled')
-            .siblings()
-            .removeClass('enabled');
-
     rectDown.addClass('active').removeClass('broken-border');
 
+    makeEnabledToggleItem(item);
     showDescription(index);
     checkEnabledClass(item);
   };
@@ -47,11 +55,16 @@
   // Если все toggleItems НЕ активны
   function checkEnabledClass(item) {
     if ( !$(item).hasClass('enabled') ) {
-      rectDown.removeClass('active').addClass('broken-border').css({'height': ''});
-      rectDownDesc.removeClass('visible').addClass('hide');
-      rectDownGeniuses.removeClass('visible');
+      resetrectDown();
     }
   };
+
+  // Убрать и очистить rectDown
+  function resetrectDown() {
+    rectDown.removeClass('active').addClass('broken-border').css({'height': ''});
+    rectDownDesc.removeClass('visible').addClass('hide');
+    rectDownGeniuses.removeClass('visible');
+  }
 
   // Бордер при условии
   function checkBorderForRectTop() {
@@ -68,48 +81,81 @@
     }
   };
 
+  // Эффект печатающегося текста
+  function startDinamicText() {
+    var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
+
+    // var str = '<b>Параметры сборки</b>',
+    
+    strLength = str.length,
+    counter = 0,
+    timerId;
+
+    dinamicText.html('');
+
+    timerId = setInterval(function() {
+      
+      if ( rectTop.hasClass('active') ) {
+        
+        dinamicText.html( dinamicText.html() + str[counter++] );
+        if (counter == strLength) clearInterval(timerId);
+
+      } else {
+        counter = 0;
+        clearInterval(timerId);
+      } 
+    }, 100);
+  };
+
+  // Обработчик события клика для rectTop и logo
+  function getActiveRectTop() {
+    !rectTop.hasClass('active') 
+            ? rectTop.addClass('active')
+            : rectTop.removeClass('active');
+
+    if ( rectDown.hasClass('active') ) {
+      resetrectDown();
+      makeEnabledToggleItem();
+    }
+
+    startDinamicText();
+    checkBorderForRectTop();
+  };
+
   // Событие клика для toggleItems
   toggleItems.each(function(index, elem) {
     $(this).on('click', function() {
       toggleItem(index, elem);
       checkBorderForRectTop();
+
+      if ( rectTop.hasClass('active') ) {
+        rectTop.removeClass('active');
+        startDinamicText();
+      }
     })  
   });
+  
+  // Событие клика для rectTop
+  rectTop.on('click', getActiveRectTop);
+
+  // Событие клика для logo
+  logo.on('click', getActiveRectTop);
 
   // Событие клика для rectTop
-  rectTop.on('click', function() {
-    if ( !$(this).hasClass('active') ) {
-      $(this).addClass('active')
-             .addClass('no-touch');
+  // rectTop.on('click', function() {
 
-      startDinamicText(this);
+  //   !$(this).hasClass('active') 
+  //           ? $(this).addClass('active')
+  //           : $(this).removeClass('active');
 
-    } else {
-      $(this).removeClass('active');
-      dinamicText.html('');
-    }
+  //   if ( rectDown.hasClass('active') ) {
+  //     resetrectDown();
+  //     makeEnabledToggleItem();
+  //   }
 
-    checkBorderForRectTop();
-  });
-
-  // Эффект печатающегося текста
-  function startDinamicText(parent) {
-    var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
-
-    // var str = '<b>Параметры сборки</b>',
-    
-	  strLength = str.length,
-    counter = 0,
-    timerId;
-
-    dinamicText.html('');
-    
-	  timerId = setInterval(function () {
-      dinamicText.html( dinamicText.html() + str[counter++] );
-
-	    if (counter == strLength) clearInterval(timerId), $(parent).removeClass('no-touch');
-	  }, 100);
-  };
+  //   startDinamicText();
+  //   checkBorderForRectTop();
+  // });
 
 })();
 
