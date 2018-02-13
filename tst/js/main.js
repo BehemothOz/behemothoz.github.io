@@ -66,18 +66,24 @@
     rectDownGeniuses.removeClass('visible');
   }
 
-  // Бордер при условии
+  // Бордер для RectTop при условии
   function checkBorderForRectTop() {
-    if ( rectTop.hasClass('active') && rectDown.hasClass('active') ) {
-      rectTop.removeClass('broken-border');
+    var windowWidth = $(window).width();
+
+    if ( rectTop.hasClass('active') ) {
+      rectTop.addClass('broken-border').removeClass('broken-border-lg');
     }
-    
-    else if ( rectTop.hasClass('active') || rectDown.hasClass('active') ) {
+
+    else if (rectDown.hasClass('active') && windowWidth < 1200 ) {
       rectTop.addClass('broken-border');
     }
-    
+
+    else if (rectDown.hasClass('active') && windowWidth >= 1200 ) {
+      rectTop.addClass('broken-border-lg');
+    }
+
     else {
-      rectTop.removeClass('broken-border');
+      rectTop.removeClass('broken-border').removeClass('broken-border-lg');
     }
   };
 
@@ -140,22 +146,6 @@
 
   // Событие клика для logo
   logo.on('click', getActiveRectTop);
-
-  // Событие клика для rectTop
-  // rectTop.on('click', function() {
-
-  //   !$(this).hasClass('active') 
-  //           ? $(this).addClass('active')
-  //           : $(this).removeClass('active');
-
-  //   if ( rectDown.hasClass('active') ) {
-  //     resetrectDown();
-  //     makeEnabledToggleItem();
-  //   }
-
-  //   startDinamicText();
-  //   checkBorderForRectTop();
-  // });
 
 })();
 

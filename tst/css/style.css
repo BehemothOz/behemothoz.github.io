@@ -352,6 +352,28 @@ body {
   background-color: #74bcbf;
 }
 
+.rectangle-dinamic-up.broken-border-lg {
+  border-width: 2px 0 0;
+}
+
+.rectangle-dinamic-up.broken-border-lg::after, .rectangle-dinamic-up.broken-border-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 254px;
+}
+
+.rectangle-dinamic-up.broken-border-lg::after {
+  left: 0;
+  background-color: #3b9198;
+}
+
+.rectangle-dinamic-up.broken-border-lg::before {
+  right: 0;
+  background-color: #74bcbf;
+}
+
 .rectangle-dinamic-up.active {
   top: -105px;
 }
