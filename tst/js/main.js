@@ -74,11 +74,11 @@
       rectTop.addClass('broken-border').removeClass('broken-border-lg');
     }
 
-    else if (rectDown.hasClass('active') && windowWidth < 1200 ) {
+    else if (rectDown.hasClass('active') && windowWidth < 1400 ) {
       rectTop.addClass('broken-border');
     }
 
-    else if (rectDown.hasClass('active') && windowWidth >= 1200 ) {
+    else if (rectDown.hasClass('active') && windowWidth >= 1400 ) {
       rectTop.addClass('broken-border-lg');
     }
 
@@ -158,6 +158,8 @@
   var geniusesItem = $('.geniuses-item'),
       screenTesting = $('.screen-testing'),
       screenPreview = $('.screen-preview');
+    
+  var btnSubmit = $('.button-submit');
 
   geniusesItem.each(function(index, elem) {
     $(this).on('click', function() {
@@ -165,6 +167,21 @@
       screenPreview.hide();
     })
   })
+
+  btnSubmit.on('click', function() {
+    screenTesting.hide();
+    screenPreview.show();
+
+    $('.toggle-item').removeClass('enabled');
+    $('.geniuses-list').removeClass('visible');
+    $('.rectangle-dynamic-down').addClass('finish');
+    $('.finish-msg').show();
+    $('.screen-preview').css({'pointer-events': 'none'});
+    $('.rectangle-dinamic-up')
+          .removeClass('broken-border-lg')
+          .addClass('broken-border');
+  });
+
 })();
 
 
@@ -172,29 +189,27 @@
 // Testing Screen
 // ---------------
 
-// TODO УПРОСТИТЬ!
-
 (function() {
-  var btnStart = $('.button-start');
-  var btnSubmit = $('.button-submit');
+  var btnStart = $('.button-start'),
+      btnSubmit = $('.button-submit'),
+      screenTest = $('.screen-testing'),
+      inputEmail = $('.input-email');
 
-
-  var screenTest = $('.screen-testing');
-  var inputEmail = $('.input-email');
-
-  var scrollContainer = $('.scroll-container');
-  var questionsList = $('.questions-list');
-  var displayTimer = $('.timer span');
+  var scrollContainer = $('.scroll-container'),
+      questionsList = $('.questions-list'),
+      displayTimer = $('.timer span');
 
   btnStart.on('click', function() {
     screenTest.addClass('testing-start');
     scrollContainer.addClass('active');
-    questionsList.css({'display': 'block'});
 
-  
+    scrollContainer.delay(300).animate({ height: "515px" }, 300);
+
+
+    questionsList.css({'display': 'block'});
+ 
     $(this).hide();
     btnSubmit.show();
-
 
     // Показать экран с вопросами
     startTestingScreen();
@@ -210,6 +225,7 @@
       btnStart.prop('disabled', false);
     }
   })
+
 })();
 
 
@@ -237,12 +253,12 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
 
   if ( scrollTop >= fixingPoint ) {
     fixedBlock.addClass('fixed');
-    testingWrap.addClass('offset-scroll')//.addClass('qwerty');
+    testingWrap.addClass('offset-scroll');
   }
     
   else {
     fixedBlock.removeClass('fixed');
-    testingWrap.removeClass('offset-scroll')//.removeClass('qwerty');
+    testingWrap.removeClass('offset-scroll');
   }
 };
 

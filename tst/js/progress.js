@@ -5,6 +5,9 @@
   var inputAnswer = $('.input-answer');
   var question = $('.questions-list .question');
   var scale = $('.progress-bar .scale');
+  var countDash = 5;
+
+  var btnSubmit = $('.button-submit');
 
   inputAnswer.each(function(index, element) {
     $(this).on('change', function() {
@@ -13,7 +16,13 @@
         countingAnswers();
       }
     })
-  })
+  });
+
+  function checkStatusBtnSubmit(countAnswer) {
+    if (countAnswer == countDash) {
+      btnSubmit.prop('disabled', false);
+    }
+  };
   
   function countingAnswers() {
     let answerArray = [];
@@ -27,9 +36,11 @@
     });
   
     changeHeightProgressBar(answerArray.length);
-  }
+    checkStatusBtnSubmit(answerArray.length);
+  };
   
   function changeHeightProgressBar(count) {
-    scale.css({'height': (100 / 5 ) * count + '%'});
+    scale.css({'height': (100 / countDash ) * count + '%'});
   };
+
 })();

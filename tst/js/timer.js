@@ -1,7 +1,7 @@
 // Timer
 
 function startTimer(duration, display) {
-  var timer = duration, 
+  var timer = duration,
       minutes,
       seconds;
 
@@ -15,7 +15,7 @@ function startTimer(duration, display) {
       display.text(minutes + ":" + seconds);
 
       if (--timer < 0) {
-          timer = duration;
+          timer = 0;
       }
   }, 1000);
 }
