@@ -163,14 +163,19 @@
 
   geniusesItem.each(function(index, elem) {
     $(this).on('click', function() {
-      screenTesting.show();
-      screenPreview.hide();
+      
+      screenPreview.fadeOut(400, function() {
+        screenTesting.fadeIn(400);
+      });
     })
   })
 
   btnSubmit.on('click', function() {
-    screenTesting.hide();
-    screenPreview.show();
+    // screenTesting.hide();
+    // screenPreview.show();
+    screenTesting.fadeOut(400, function() {
+      screenPreview.fadeIn(400);
+    })
 
     $('.toggle-item').removeClass('enabled');
     $('.geniuses-list').removeClass('visible');
@@ -264,3 +269,7 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
   }
 };
 
+// $(window).scroll(function() {
+//   console.log($(this).width())
+//   console.log($(this).height())
+// })

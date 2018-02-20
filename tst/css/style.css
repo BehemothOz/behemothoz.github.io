@@ -246,6 +246,12 @@ body {
   padding: 45px 0 20px;
 }
 
+@media screen and (min-width: 1400px) {
+  .screen-testing {
+    padding-top: 73px;
+  }
+}
+
 @media screen and (max-width: 413px) {
   .screen-testing {
     padding-top: 40px;
@@ -701,6 +707,12 @@ body {
 @media screen and (max-width: 413px) {
   .testing-wrap .scroll-container {
     height: 361px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .testing-wrap .scroll-container {
+    height: 462px;
   }
 }
 
