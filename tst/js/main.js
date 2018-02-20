@@ -203,7 +203,7 @@
     screenTest.addClass('testing-start');
     scrollContainer.addClass('active');
 
-    scrollContainer.delay(300).animate({ height: "515px" }, 300);
+    //scrollContainer.delay(300).animate({ height: "515px" }, 300);
 
 
     questionsList.css({'display': 'block'});
@@ -259,6 +259,8 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
   else {
     fixedBlock.removeClass('fixed');
     testingWrap.removeClass('offset-scroll');
+
+    $('.scroll-container.active').css({'transition': 'none'});
   }
 };
 
