@@ -243,7 +243,7 @@ body {
 
 .screen-testing {
   display: none;
-  padding: 73px 0 20px;
+  padding: 45px 0 20px;
 }
 
 @media screen and (max-width: 413px) {
@@ -666,7 +666,7 @@ body {
 }
 
 .screen-testing .logo-wrap {
-  margin-bottom: 60px;
+  margin-bottom: 38px;
   text-align: center;
 }
 
