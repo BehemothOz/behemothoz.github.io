@@ -150,17 +150,101 @@
 })();
 
 
-// ----------------------------------
-// Toggle Testing and Preview Screen
-// ----------------------------------
+// --------------------------------------------------
+// Toggle Testing and Preview Screen + Testing Screen
+// --------------------------------------------------
 
 ;(function() {
   var geniusesItem = $('.geniuses-item'),
       screenTesting = $('.screen-testing'),
       screenPreview = $('.screen-preview');
     
-  var btnSubmit = $('.button-submit');
+  var btnSubmit = $('.button-submit'),
+      btnStart = $('.button-start');
 
+  var scrollContainer = $('.scroll-container'),
+      questionsList = $('.questions-list'),
+      displayTimer = $('.timer span'),
+      inputEmail = $('.input-email');
+
+  // Показать Testing Screen
+  function showTestingScreen() {
+    screenTesting.addClass('testing-start');
+    scrollContainer.addClass('active');
+
+    questionsList.show();
+ 
+    btnStart.hide();
+    btnSubmit.show();
+
+    // Показать экран с вопросами
+    startTestingScreen();
+
+    // Старт таймера
+    startTimer(300, displayTimer);
+  }
+  
+  // Сбросить состояние Testing Screen
+  // function resetTestingScreen() {
+  //   screenTesting.removeClass('testing-start');
+  //   scrollContainer.removeClass('active');
+  //   $('.testing-wrap').removeClass('offset-scroll');
+  //   $('.top-fixed-real').removeClass('fixed');
+
+  //   questionsList.hide();
+ 
+  //   btnStart.show();
+  //   btnSubmit.hide();
+
+  //   // $('.scroll-container').scrollTop = 0;
+  //   // console.log(scrollContainer)
+  //   // console.log(scrollContainer.scrollTop())
+
+  //   // Показать экран с вопросами
+  //   // startTestingScreen();
+
+  //   // Старт таймера
+  //   // startTimer(300, displayTimer);
+  // }
+
+  // Сбросить состояние Preview Screen
+  function resetStatePreviewScreen() {
+    $('.toggle-item').removeClass('enabled');
+    $('.geniuses-list').removeClass('visible');
+    $('.rectangle-dinamic-up')
+          .removeClass('broken-border-lg')
+          .addClass('broken-border');
+  }
+
+  // Показать финальное сообщение
+  function showFinalMessage() {
+    resetStatePreviewScreen();
+
+    $('.rectangle-dynamic-down').addClass('finish');
+    $('.finish-msg').show();
+    $('.screen-preview').css({'pointer-events': 'none'});
+  }
+
+  // Скрыть финальное сообщение
+  function hideFinalMessage() {
+    $('.rectangle-dynamic-down')
+          .height('')
+          .removeClass('active')
+          .removeClass('finish')
+          .addClass('broken-border');
+
+    $('.rectangle-dinamic-up').removeClass('broken-border');
+          
+    $('.finish-msg').hide();
+    $('.screen-preview').css({'pointer-events': 'all'});
+
+    // resetTestingScreen();
+    setTimeout(function() {
+      location.reload();
+    }, 400);
+  }
+
+  // Событие для geniusesItem
   geniusesItem.each(function(index, elem) {
     $(this).on('click', function() {
       
@@ -170,59 +254,25 @@
     })
   })
 
+  // Submit
   btnSubmit.on('click', function() {
-    // screenTesting.hide();
-    // screenPreview.show();
     screenTesting.fadeOut(400, function() {
       screenPreview.fadeIn(400);
-    })
+    });
 
-    $('.toggle-item').removeClass('enabled');
-    $('.geniuses-list').removeClass('visible');
-    $('.rectangle-dynamic-down').addClass('finish');
-    $('.finish-msg').show();
-    $('.screen-preview').css({'pointer-events': 'none'});
-    $('.rectangle-dinamic-up')
-          .removeClass('broken-border-lg')
-          .addClass('broken-border');
+    showFinalMessage();
+
+    setTimeout(function() {
+      hideFinalMessage();
+    }, 3000)
   });
 
-})();
-
-
-// ---------------
-// Testing Screen
-// ---------------
-
-(function() {
-  var btnStart = $('.button-start'),
-      btnSubmit = $('.button-submit'),
-      screenTest = $('.screen-testing'),
-      inputEmail = $('.input-email');
-
-  var scrollContainer = $('.scroll-container'),
-      questionsList = $('.questions-list'),
-      displayTimer = $('.timer span');
-
+  // Start
   btnStart.on('click', function() {
-    screenTest.addClass('testing-start');
-    scrollContainer.addClass('active');
-
-    //scrollContainer.delay(300).animate({ height: "515px" }, 300);
-
-
-    questionsList.css({'display': 'block'});
- 
-    $(this).hide();
-    btnSubmit.show();
-
-    // Показать экран с вопросами
-    startTestingScreen();
-
-    // Старт таймера
-    startTimer(300, displayTimer);
+    showTestingScreen();
   });
 
+  
   inputEmail.on('input', function() {
     if (this.value == '') {
       btnStart.prop('disabled', true);
@@ -232,6 +282,7 @@
   })
 
 })();
+
 
 
 // ---------------
@@ -268,8 +319,3 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
     $('.scroll-container.active').css({'transition': 'none'});
   }
 };
-
-// $(window).scroll(function() {
-//   console.log($(this).width())
-//   console.log($(this).height())
-// })
