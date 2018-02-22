@@ -184,29 +184,6 @@
     startTimer(300, displayTimer);
   }
   
-  // Сбросить состояние Testing Screen
-  // function resetTestingScreen() {
-  //   screenTesting.removeClass('testing-start');
-  //   scrollContainer.removeClass('active');
-  //   $('.testing-wrap').removeClass('offset-scroll');
-  //   $('.top-fixed-real').removeClass('fixed');
-
-  //   questionsList.hide();
- 
-  //   btnStart.show();
-  //   btnSubmit.hide();
-
-  //   // $('.scroll-container').scrollTop = 0;
-  //   // console.log(scrollContainer)
-  //   // console.log(scrollContainer.scrollTop())
-
-  //   // Показать экран с вопросами
-  //   // startTestingScreen();
-
-  //   // Старт таймера
-  //   // startTimer(300, displayTimer);
-  // }
-
   // Сбросить состояние Preview Screen
   function resetStatePreviewScreen() {
     $('.toggle-item').removeClass('enabled');
@@ -238,21 +215,20 @@
     $('.finish-msg').hide();
     $('.screen-preview').css({'pointer-events': 'all'});
 
-    // resetTestingScreen();
     setTimeout(function() {
       location.reload();
     }, 400);
   }
 
   // Событие для geniusesItem
-  geniusesItem.each(function(index, elem) {
-    $(this).on('click', function() {
+  // geniusesItem.each(function(index, elem) {
+  //   $(this).on('click', function() {
       
-      screenPreview.fadeOut(400, function() {
-        screenTesting.fadeIn(400);
-      });
-    })
-  })
+  //     screenPreview.fadeOut(400, function() {
+  //       screenTesting.fadeIn(400);
+  //     });
+  //   })
+  // })
 
   // Submit
   btnSubmit.on('click', function() {
@@ -319,3 +295,186 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
     $('.scroll-container.active').css({'transition': 'none'});
   }
 };
+
+
+
+// ---------------
+// Dinamic content
+// ---------------
+
+// Заполнение прогресс бара
+function watchProgressBar(countDash) {
+
+  var inputAnswer = $('.input-answer');
+  var question = $('.questions-list .question');
+  var scale = $('.progress-bar .scale');
+  // var countDash = 5;
+
+  var btnSubmit = $('.button-submit');
+
+  inputAnswer.each(function(index, element) {
+    $(this).on('change', function() {
+      if ( $(this).prop('checked') ) {
+        $(this).parents('.question').data('checked', true);
+        countingAnswers();
+      }
+    })
+  });
+
+  function checkStatusBtnSubmit(countAnswer) {
+    if (countAnswer == countDash) {
+      btnSubmit.prop('disabled', false);
+    }
+  };
+  
+  function countingAnswers() {
+    let answerArray = [];
+  
+    question.each(function(i, el) {
+      var check = $(this).data('checked');
+      
+      if (check == true) {
+        answerArray.push(check);
+      }
+    });
+  
+    changeHeightProgressBar(answerArray.length);
+    checkStatusBtnSubmit(answerArray.length);
+  };
+  
+  function changeHeightProgressBar(count) {
+    scale.css({'height': (100 / countDash ) * count + '%'});
+  };
+};
+
+// Генерация списка вопросов в зависимости от выбранного geniuses 
+var generationQuestionsList = function(data) {
+  var questionsList = $('.questions-list');
+  var questions = data.question;
+
+  var str = '';
+
+  var htmlQuestion = function(question, indexQuestion) {
+    return  '<li class="question" data-checked>' +
+              '<div class="question-text">' + question.title + '</div>' + 
+              '<ul class="answers-list">' + getAnswers(question.answer, indexQuestion) + '</ul>' +
+            '</li>';
+  };
+
+  var htmlAnswer = function(answer, index, indexQuestion) {
+    console.log(indexQuestion)
+    return  '<li class="answer">' +
+              '<label class="label">' +
+                '<input class="input-answer"' + 
+                       'type="radio"' +
+                       'name="answer-' + indexQuestion + '"' + 
+                       'value="' + index + '">' +
+                '<span class="fake-checkbox"></span>' +
+                '<span class="possible-answer">' + answer + '</span>' +
+              '</label>' +
+            '</li>';
+  };
+
+  // Итерация по вариантам ответа
+  function getAnswers(answerArray, indexQuestion) {
+    var string = '';
+
+    answerArray.forEach(function(answer, i) {
+      string = string + htmlAnswer(answer, i, indexQuestion);
+    })
+
+    return string;
+  };
+
+  // Итерация по вопросам
+  function getQuestion(questionArray) {
+    var string = '';
+
+    questionArray.forEach(function(question, index) {
+      string = string + htmlQuestion(question, index);
+    })
+
+    return string;
+  };
+
+  (function appendQuestions() {
+    questionsList.html(getQuestion(questions));
+    watchProgressBar(questions.length);
+  })();
+
+};
+
+// Генерация заголовка
+var generationHeadingForTesting = function(data) {
+  var heading = $('.testing-heading .dinamic-path');
+  
+  heading.html(data.short);  
+};
+
+// Генерация прогресс бара
+var generationProgressBar = function(data) {
+  var scaleDash = $('.scale-dash');
+  var countDash = data.question.length;
+  var i = 0;
+  var str = '';
+
+  for(; i < countDash; i++) {
+    var top = (100 / countDash) * i;
+    str = str + '<div class="dash" style="top: '+ top +'%">-' + (countDash - i) +  '</div>';
+  }
+
+  scaleDash.html(str);
+};
+
+
+// Генерация geniuses
+;(function(data) {
+  var geniusesItem = $('.geniuses-item'),
+      screenTesting = $('.screen-testing'),
+      screenPreview = $('.screen-preview');
+
+  var htmlGeniuses = function(geniuse, i) {
+    return '<li class="geniuses-item" data-index="' + i + '">' + 
+              '<span>' + geniuse.name + '</span>' +
+           '</li>';
+  };
+
+  // Итерация по geniuses
+  function getGeniuses(data) {
+    var str = '';
+
+    data.forEach(function(geniuse, i) {
+      str = str + htmlGeniuses(geniuse, i);
+    });
+
+    return str;
+  };
+
+  // Обработчик клика для geniuses
+  function handlerGeniuses(elem, data) {
+    var index = $(elem).data('index');
+
+    screenPreview.fadeOut(400, function() {
+      screenTesting.fadeIn(400);
+    });
+
+    generationQuestionsList(data[index]);
+    generationHeadingForTesting(data[index]);
+    generationProgressBar(data[index]);
+  };
+
+  // Найти и повесить событие клика на geniuses
+  function searchGeniusesHangEventClick(data) {
+    $('.geniuses-item').each(function(i, geniuse) {
+      $(geniuse).on('click', function() {
+        handlerGeniuses(this, data);
+      });
+    });
+  };
+
+  (function appendGeniuses(data) {
+    $('.geniuses-list .inner-list').html(getGeniuses(data));
+    searchGeniusesHangEventClick(data);
+  })(data);
+
+})(dataGeniuses);

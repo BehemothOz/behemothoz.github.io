@@ -803,6 +803,10 @@ body {
   }
 }
 
+.testing-wrap .bg-heading .testing-heading .dinamic-path {
+  text-transform: uppercase;
+}
+
 .testing-wrap .bg-email {
   border-width: 0 20px;
   border-style: solid;
@@ -926,13 +930,6 @@ body {
     width: 17px;
     height: 195px;
   }
-}
-
-.testing-wrap .middle-heading .progress-bar .progress-bar-wrap {
-  position: absolute;
-  width: 100%;
-  height: 90%;
-  bottom: 0;
 }
 
 .testing-wrap .middle-heading .progress-bar .scale-dash {
