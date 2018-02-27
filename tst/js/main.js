@@ -9,9 +9,6 @@ $(window).on('load', function() {
 
   rectTop.addClass('rect-up-animation');
 
-  // rectTop.animate({top: 0}, duration);
-
-
   rectDown.addClass('rect-down-animation');
 
   // setTimeout(function() {
@@ -19,8 +16,10 @@ $(window).on('load', function() {
   // }, duration);
 
   setTimeout(function() {
-    rectDown.removeClass('rect-down-animation').addClass('main-position');
-    rectTop.removeClass('rect-up-animation').addClass('main-position');
+    // rectDown.removeClass('rect-down-animation').addClass('main-position');
+    // rectTop.removeClass('rect-up-animation').addClass('main-position');
+    rectTop.css({'opacity': '1'})
+    rectDown.css({'opacity': '1'})
     $('body').removeClass('no-scroll');
   }, duration);
 

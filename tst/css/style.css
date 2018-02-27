@@ -279,30 +279,28 @@ body.no-scroll {
 @-webkit-keyframes slideDown {
   0% {
     top: -370px;
+    opacity: 0;
   }
   100% {
     top: 0px;
+    opacity: 1;
   }
 }
 
 @keyframes slideDown {
   0% {
     top: -370px;
+    opacity: 0;
   }
   100% {
     top: 0px;
+    opacity: 1;
   }
 }
 
 .rect-up-animation {
-  -webkit-animation-name: slideDown;
-  animation-name: slideDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
-  -webkit-animation-delay: 0.01s;
-  animation-delay: 0.01s;
+  -webkit-animation: slideDown 1s ease;
+  animation: slideDown 1s ease;
 }
 
 @-webkit-keyframes slideTop {
@@ -328,14 +326,8 @@ body.no-scroll {
 }
 
 .rect-down-animation {
-  -webkit-animation-name: slideTop;
-  animation-name: slideTop;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
-  -webkit-animation-delay: 0.01s;
-  animation-delay: 0.01s;
+  -webkit-animation: slideTop 1s ease;
+  animation: slideTop 1s ease;
 }
 
 .screen-preview .logo-wrap {
@@ -416,7 +408,8 @@ body.no-scroll {
   -o-transition: top 0.3s ease;
   transition: top 0.3s ease;
   cursor: pointer;
-  top: -370px;
+  opacity: 0;
+  top: 0;
 }
 
 @media screen and (min-width: 1400px) {
@@ -525,7 +518,7 @@ body.no-scroll {
   -o-transition: margin-top 0.3s ease;
   transition: margin-top 0.3s ease;
   overflow: hidden;
-  top: 340px;
+  top: 0;
   opacity: 0;
 }
 
