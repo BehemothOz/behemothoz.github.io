@@ -295,8 +295,14 @@ body.no-scroll {
 }
 
 .rect-up-animation {
-  -webkit-animation: slideDown 1s ease;
-  animation: slideDown 1s ease;
+  -webkit-animation-name: slideDown;
+  animation-name: slideDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-delay: 0.01s;
+  animation-delay: 0.01s;
 }
 
 @-webkit-keyframes slideTop {
@@ -322,8 +328,14 @@ body.no-scroll {
 }
 
 .rect-down-animation {
-  -webkit-animation: slideTop 1s ease;
-  animation: slideTop 1s ease;
+  -webkit-animation-name: slideTop;
+  animation-name: slideTop;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-delay: 0.01s;
+  animation-delay: 0.01s;
 }
 
 .screen-preview .logo-wrap {
