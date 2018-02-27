@@ -10,10 +10,13 @@ $(window).on('load', function() {
   rectDown.addClass('rect-down-animation');
 
   setTimeout(function() {
-    rectTop.removeClass('rect-up-animation').addClass('main-position');
     rectDown.removeClass('rect-down-animation').addClass('main-position');
 
     $('body').removeClass('no-scroll');
+  }, duration);
+
+  setTimeout(function() {
+    rectTop.removeClass('rect-up-animation').addClass('main-position');
   }, duration);
 })
 
