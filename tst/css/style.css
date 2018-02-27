@@ -419,7 +419,7 @@ body.no-scroll {
 }
 
 .rectangle-dinamic-up.main-position {
-  top: 0px;
+  opacity: 1;
 }
 
 .rectangle-dinamic-up.active {
@@ -529,7 +529,6 @@ body.no-scroll {
 }
 
 .rectangle-dynamic-down.main-position {
-  top: 0;
   opacity: 1;
 }
 

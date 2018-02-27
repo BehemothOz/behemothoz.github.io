@@ -18,8 +18,10 @@ $(window).on('load', function() {
   setTimeout(function() {
     // rectDown.removeClass('rect-down-animation').addClass('main-position');
     // rectTop.removeClass('rect-up-animation').addClass('main-position');
-    rectTop.css({'opacity': '1'})
-    rectDown.css({'opacity': '1'})
+    rectTop.addClass('main-position');
+    rectDown.addClass('main-position');
+    // rectTop.css({'opacity': '1'})
+    // rectDown.css({'opacity': '1'})
     $('body').removeClass('no-scroll');
   }, duration);
 
