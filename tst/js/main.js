@@ -7,17 +7,23 @@ $(window).on('load', function() {
       rectTop = $('.rectangle-dinamic-up');
 
   rectTop.addClass('rect-up-animation');
+
+  // rectTop.animate({top: 0}, duration);
+
+
   rectDown.addClass('rect-down-animation');
+
+  // setTimeout(function() {
+  //   rectTop.removeClass('rect-up-animation').addClass('main-position');
+  // }, duration);
 
   setTimeout(function() {
     rectDown.removeClass('rect-down-animation').addClass('main-position');
-
+    rectTop.removeClass('rect-up-animation').addClass('main-position');
     $('body').removeClass('no-scroll');
   }, duration);
 
-  setTimeout(function() {
-    rectTop.removeClass('rect-up-animation').addClass('main-position');
-  }, duration);
+  
 })
 
 
