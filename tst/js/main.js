@@ -1,7 +1,7 @@
 
 // Начальная анимация
 
-$(document).ready(function() {
+// $(document).ready(function() {
 $(window).on('load', function() {
   var duration = 1000;
   var rectDown = $('.rectangle-dynamic-down'),
@@ -28,7 +28,7 @@ $(window).on('load', function() {
   
 })
 
-})
+// })
 
 
 // ---------------
