@@ -1,4 +1,23 @@
 
+// Начальная анимация
+
+$(window).on('load', function() {
+  var duration = 1000;
+  var rectDown = $('.rectangle-dynamic-down'),
+      rectTop = $('.rectangle-dinamic-up');
+
+  rectTop.addClass('rect-up-animation');
+  rectDown.addClass('rect-down-animation');
+
+  setTimeout(function() {
+    rectTop.removeClass('rect-up-animation').addClass('main-position');
+    rectDown.removeClass('rect-down-animation').addClass('main-position');
+
+    $('body').removeClass('no-scroll');
+  }, duration);
+})
+
+
 // ---------------
 // Preview Screen
 // ---------------
@@ -110,7 +129,7 @@
         counter = 0;
         clearInterval(timerId);
       } 
-    }, 100);
+    }, 30);
   };
 
   // Обработчик события клика для rectTop и logo
@@ -304,7 +323,6 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
 
 // Заполнение прогресс бара
 function watchProgressBar(countDash) {
-
   var inputAnswer = $('.input-answer');
   var question = $('.questions-list .question');
   var scale = $('.progress-bar .scale');
@@ -362,7 +380,6 @@ var generationQuestionsList = function(data) {
   };
 
   var htmlAnswer = function(answer, index, indexQuestion) {
-    console.log(indexQuestion)
     return  '<li class="answer">' +
               '<label class="label">' +
                 '<input class="input-answer"' + 
@@ -433,6 +450,18 @@ var generationProgressBar = function(data) {
       screenTesting = $('.screen-testing'),
       screenPreview = $('.screen-preview');
 
+  var btnBack = $('.js-logo-back');
+  
+  var handlerBtnBack = function() {
+    btnBack.on('click', function() {
+      if ( !screenTesting.hasClass('testing-start') ) {
+        screenTesting.fadeOut(400, function() {
+          screenPreview.fadeIn(400);
+        });
+      }
+    });
+  };
+
   var htmlGeniuses = function(geniuse, i) {
     return '<li class="geniuses-item" data-index="' + i + '">' + 
               '<span>' + geniuse.name + '</span>' +
@@ -461,6 +490,8 @@ var generationProgressBar = function(data) {
     generationQuestionsList(data[index]);
     generationHeadingForTesting(data[index]);
     generationProgressBar(data[index]);
+
+    handlerBtnBack();
   };
 
   // Найти и повесить событие клика на geniuses
