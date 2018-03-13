@@ -25,12 +25,36 @@ $(window).on('load', function() {
 
 
 
+// -----------
+// Scroll Body
+// -----------
+
+(function() {
+  var singleScreen = $('.single-screen');
+
+  function parallax(element) {
+    var yPosition = $(window).scrollTop() / 3;
+
+    element.css({
+      'background-position-y': -yPosition + 'px'
+    })
+  }
+
+  if ( $(window).width() >= 1100 ) {
+
+    $(window).on('scroll', function() {
+      parallax(singleScreen);
+    });
+  }
+
+})();
+
+
+
 
 // ---------------
 // Preview Screen
 // ---------------
-
-if (  $(window).width() >= 1100 ) {
 
 ;(function() {
   var toggleItems = $('.toggle-item'),
@@ -59,27 +83,35 @@ if (  $(window).width() >= 1100 ) {
   };
 
 
-  // ===========
+  // ==========
   // Animations
   // ==========
 
-  function animateFirstClick(durationTop, showText, index) {
+  function animateFirstClick(durationTop, delayShowText, showText, index, descHeight) {
     rectDown.animate({
-      'margin-top': '-45px'
-    }, durationTop, function() { // 600
+      'margin-top': '-45px',
+      'height': descHeight
+    }, durationTop, function() {
       $('.border-top').show(); // Для второй анимации
 
       rectDown.removeClass('broken-border').addClass('fill-details')
-        .delay(600)
+        .delay(delayShowText)
         .queue(function() {
           $(this).addClass('active');
-
+          
           if (showText) {
-            animateTextBlocks(index, 700);
+            $(window).width() >= 1100
+              ? animateTextBlocks(index, 700, 300)
+              : animateTextBlocks(index, 50, 400);
 
             setTimeout(function() {
               $('.screen-preview').removeClass('no-touch');
-            }, 1000);
+            }, $(window).width() >= 1100 ? 500 : 200);
+
+          } else {
+            $(window).width() >= 1100
+              ? animateTextBlocks(index, 700, 300)
+              : animateTextBlocks(index, 100, 600);
           }
 
           $(this).dequeue();
@@ -87,58 +119,65 @@ if (  $(window).width() >= 1100 ) {
      });
   };
 
-  function animateLastClick() {
+  function animateLastClick(delayTop, initHeight, durationTop) {
     rectDown
-      .delay(0)
       .queue(function() {
         $(this).removeClass('active').removeClass('fill-details');
         $(this).dequeue();
       })
-      .delay(200).queue(function() {
+      .delay(delayTop)
+      .queue(function() {
         $('.border-top').hide();
         $(this).addClass('broken-border');
 
-        $(this).delay(200).animate({
-          'margin-top': '-150px'
-        }, 300);
-
+        $(this).delay(delayTop).animate({'margin-top': '-150px', 'height': initHeight}, durationTop);
         $(this).dequeue();
       });
   };
 
-  function animateTextBlocks(index, delay) {
+  function animateTextBlocks(index, delay, duration) {
     rectDownDesc.fadeTo(0, 1, function() {
       rectDownDescItem
         .eq(index)
-        .delay(delay).fadeIn(300) // 1800
+        .delay(delay).fadeTo(300, 1)
         .siblings()
         .hide();
     });
   };
 
-  // end
 
+  // ================
+  // Work with blocks
+  // ================
 
   // Первый клик по toggleItems
-  function toggleItemInitStateRectDown(index, item) {
+  function toggleItemInitStateRectDown(index, item, descHeight) {
+    
+    // console.log(11)
+    $('html,body').animate({scrollTop: 160}, 800);
 
     makeEnabledToggleItem(item);
-    animateFirstClick(600);
+    // animateFirstClick(600);
 
-    showDescription(index, initStateRectDown);
+    showDescription(index, initStateRectDown, descHeight);
     initStateRectDown = true;
   };
 
   // Убрать и очистить rectDown
   function resetRectDown() {
+    $('html,body').animate({scrollTop: 0}, 800);
+
+    // rectDownDescItem.siblings().fadeOut(0);
+    rectDownDescItem.siblings().fadeTo(0, 0);
+    $(window).width() >= 1100
+        ? animateLastClick(200, 266, 300)
+        : animateLastClick(0, 210, 500);
     
-    rectDownDescItem.siblings().fadeOut(0);
-    animateLastClick();
     initStateRectDown = false;
   };
 
   // Обработчик события клика для toggleItems (кроме первого)
-  function toggleItem(index, item) {
+  function toggleItem(index, item, descHeight) {
 
     makeEnabledToggleItem(item);
 
@@ -147,38 +186,44 @@ if (  $(window).width() >= 1100 ) {
     } else {
       showDescription(index, initStateRectDown);
     }
-
-    // makeEnabledToggleItem(item);
-    // showDescription(index);
-    // checkEnabledClass(item);
   };
     
   // Показать нужное описание или таблицу с должностями
-  function showDescription(index, initStateRectDown) {
+  function showDescription(index, initStateRectDown, descHeight) {
+    $('.screen-preview').addClass('no-touch');
 
     if (initStateRectDown == true) {
-      
-      $('.screen-preview').addClass('no-touch');
-      rectDownDescItem.siblings().fadeOut(0);
 
-      animateLastClick();
+      rectDownDescItem.siblings().fadeTo(0, 0);
 
-      setTimeout(function() {
-        animateFirstClick(800, true, index);
-      }, 800)
+      if ( $(window).width() >= 1100 ) {
+        animateLastClick(200, 266, 300);
+
+        setTimeout(function() {
+          var checkDescHeight = rectDownDescItem.eq(index).innerHeight();
+          animateFirstClick(600, 300, true, index, checkDescHeight);
+        }, 800);
+      }
+
+      else {
+        animateLastClick(0, 210, 500);
+
+        setTimeout(function() {
+          var checkDescHeight = rectDownDescItem.eq(index).innerHeight();
+          animateFirstClick(800, 0, true, index, checkDescHeight);
+        }, 600);
+      }
     }
 
     else if (initStateRectDown == false) {
-
-      $('.screen-preview').addClass('no-touch');
-      animateTextBlocks(index, 1800, false);
+      $(window).width() >= 1100
+          ? animateFirstClick(600, 300, false, index, descHeight)
+          : animateFirstClick(600, 0, false, index, descHeight);
 
       setTimeout(function() {
         $('.screen-preview').removeClass('no-touch');
-      }, 2000)
+      }, $(window).width() >= 1100 ? 2000 : 1000);
     }
-
-    
   };
 
   // Бордер для RectTop при условии
@@ -242,10 +287,13 @@ if (  $(window).width() >= 1100 ) {
 
   // Вызов Item при первом или последующих кликах
   function toggleHandlerForItem(index, elem) {
+    var descHeight = rectDownDescItem.eq(index).innerHeight();
+    // console.log(rectDownDescItem.eq(index).innerHeight());
+  
     if ( initStateRectDown == false ) {
-      toggleItemInitStateRectDown(index, elem);  
+      toggleItemInitStateRectDown(index, elem, descHeight);
     } else {
-      toggleItem(index, elem);
+      toggleItem(index, elem, descHeight);
     }
   };
 
@@ -265,9 +313,9 @@ if (  $(window).width() >= 1100 ) {
   };
 
 
-  // ========
-  // События
-  // =======
+  // ======
+  // Enents
+  // ======
 
   // Событие клика для toggleItems
   toggleItems.each(function(index, elem) {
@@ -296,319 +344,11 @@ if (  $(window).width() >= 1100 ) {
 
 })();
 
-} else if ($(window).width() < 1100)  {
-;(function() {
-  var toggleItems = $('.toggle-item'),
-      rectDown = $('.rectangle-dynamic-down'),
-      rectTop = $('.rectangle-dinamic-up');
-  
-  var rectDownGeniuses = rectDown.find('.geniuses-list'),
-      rectDownDesc = rectDown.find('.description-list'),
-      rectDownDescItem = rectDownDesc.find('.desc'),
-      dinamicText = $('.dinamic-text'),
-      logo = $('.logo');
 
-  var initStateRectDown = false;
 
-
-  // Сделать активным или неактивным toggleItems
-  function makeEnabledToggleItem(item) {
-    if (item) {
-      $(item).toggleClass('enabled')
-              .siblings()
-              .removeClass('enabled');  
-    } else {
-      toggleItems.removeClass('enabled');
-    }
-
-  };
-
-
-  // ===========
-  // Animations
-  // ==========
-
-  function animateFirstClick(durationTop, showText, index, height) {
-
-    var duration = height > 300 ? 500 : 200
-    console.log('время первой анимации: ' + duration)
-    
-    rectDown.animate({
-      'margin-top': '-45px'
-    }, durationTop, function() { // 600
-      $('.border-top').show(); // Для второй анимации
-
-      rectDown.removeClass('broken-border').addClass('fill-details')
-        .animate({
-          'height': height
-        }, duration)
-        .delay(0)
-        .queue(function() {
-          $(this).addClass('active');
-
-          if (showText) {
-            animateTextBlocks(index, 700);
-
-            setTimeout(function() {
-              $('.screen-preview').removeClass('no-touch');
-            }, 1000);
-          }
-          
-          else {
-            animateTextBlocks(index, duration == 500 ? 150 : 100, duration == 500 ? 600 : 600);
-          }
-
-          $(this).dequeue();
-        });
-      });
-  };
-
-  function animateLastClick(height) {
-    console.log(height)
-
-    var duration = height > 300 ? 500 : 200
-    console.log('время обратной анимации: ' + duration)
-
-    rectDown
-      .delay(0)
-      .queue(function() {
-        $(this).removeClass('active').removeClass('fill-details');
-        $(this).dequeue();
-      })
-      .animate({
-        'height': 210
-      }, duration) // 500
-      .delay(0).queue(function() {
-        $('.border-top').hide();
-        $(this).addClass('broken-border');
-
-        $(this).delay(0).animate({
-          'margin-top': '-150px'
-        }, 300);
-
-        $(this).dequeue();
-      });
-  };
-
-  function animateTextBlocks(index, delay, duration) {
-
-    console.log('задержка перед появлением текста: ' + delay)
-    console.log('время появления текста: ' + duration)
-
-    rectDownDesc.fadeTo(0, 1, function() {
-      rectDownDescItem
-        .eq(index)
-        .delay(delay).fadeTo(duration, 1) // 1800
-        .siblings()
-        .hide();
-    });
-  };
-
-  // end
-
-
-  // Первый клик по toggleItems
-  function toggleItemInitStateRectDown(index, item, height) {
-
-    makeEnabledToggleItem(item);
-    showDescription(index, initStateRectDown, height);
-    initStateRectDown = true;
-  };
-
-  // Обработчик события клика для toggleItems (кроме первого)
-  function toggleItem(index, item, height) {
-    // console.log(height)
-
-    makeEnabledToggleItem(item);
-
-    if ( !$(item).hasClass('enabled') ) {
-      resetRectDown(height);
-    } else {
-      showDescription(index, initStateRectDown, height);
-    }
-  };
-
-  // Убрать и очистить rectDown
-  function resetRectDown(height) {
-
-    //console.log(height)
-    
-    rectDownDescItem.siblings().fadeOut(0);
-    animateLastClick(height);
-    initStateRectDown = false;
-  };
-    
-  // Показать нужное описание или таблицу с должностями
-  function showDescription(index, initStateRectDown, height) {
-
-
-    if (initStateRectDown == true) {
-      
-      $('.screen-preview').addClass('no-touch');
-      rectDownDescItem.siblings().fadeOut(0);
-
-      animateLastClick();
-
-      setTimeout(function() {
-        animateFirstClick(800, true, index);
-      }, 800)
-    }
-
-    else if (initStateRectDown == false) {
-
-      $('.screen-preview').addClass('no-touch');
-      animateFirstClick(600, false, index, height);
-      // animateTextBlocks(index, 1000, false);
-
-      setTimeout(function() {
-        $('.screen-preview').removeClass('no-touch');
-      }, 2000)
-    }
-
-    
-  };
-
-  // Бордер для RectTop при условии
-  function checkBorderForRectTop() {
-    var windowWidth = $(window).width();
-
-    if ( rectTop.hasClass('active') ) {
-      rectTop.addClass('broken-border').removeClass('broken-border-lg');
-    }
-
-    else if (rectDown.hasClass('active') && windowWidth < 1400 ) {
-      rectTop.addClass('broken-border');
-    }
-
-    else if (rectDown.hasClass('active') && windowWidth >= 1400 ) {
-      rectTop.addClass('broken-border-lg');
-    }
-
-    else {
-      rectTop.removeClass('broken-border').removeClass('broken-border-lg');
-    }
-  };
-
-  // Эффект печатающегося текста
-  function startDinamicText() {
-    var str = '(void)mapView:(nonnull MGLMapView*) mapView\n\tdidSelectAnnotation:(nonnull\nid<MGLAnnotation>)annotation;\noptional func mapView(_ mapView:\nMGLMapView, didSelectAnnotation\nannotation: Any)',
-
-    // var str = '<b>Параметры сборки</b>',
-    
-    strLength = str.length,
-    counter = 0,
-    timerId;
-
-    dinamicText.html('');
-
-    timerId = setInterval(function() {
-      
-      if ( rectTop.hasClass('active') ) {
-        
-        dinamicText.html( dinamicText.html() + str[counter++] );
-        if (counter == strLength) clearInterval(timerId);
-
-      } else {
-        counter = 0;
-        clearInterval(timerId);
-      } 
-    }, 7);
-  };
-
-  // Состояние ReactTop
-  function toggleStateReactTop() {
-    if ( !rectTop.hasClass('active') ) {
-      rectTop.addClass('active')
-    } else {
-      rectTop.removeClass('active');
-    }
-
-    startDinamicText();
-    checkBorderForRectTop();
-  };
-
-  // Вызов Item при первом или последующих кликах
-  function toggleHandlerForItem(index, elem) {
-    var hg = rectDownDescItem.eq(index).innerHeight();
-    
-
-    if ( initStateRectDown == false ) {
-      toggleItemInitStateRectDown(index, elem, hg);  
-    } else {
-      toggleItem(index, elem, hg);
-    }
-  };
-
-  //Обработчик события клика для rectTop и logo
-  function getActiveRectTop() {
-
-    if ( rectDown.hasClass('active') ) {
-      resetRectDown();
-      makeEnabledToggleItem();
-
-      setTimeout(function() {
-        toggleStateReactTop();
-      }, 700);
-    } else {
-      toggleStateReactTop();
-    }
-  };
-
-
-  // ========
-  // События
-  // =======
-
-  // Событие клика для toggleItems
-  toggleItems.each(function(index, elem) {
-    $(this).on('click', function() {
-
-      if ( rectTop.hasClass('active') ) {
-        rectTop.removeClass('active');
-        startDinamicText();
-
-        setTimeout(function() {
-          toggleHandlerForItem(index, elem);
-        }, 300);
-      } else {
-        toggleHandlerForItem(index, elem);
-      }
-
-      // checkBorderForRectTop();
-    });
-  });
-  
-  // Событие клика для rectTop
-  rectTop.on('click', getActiveRectTop);
-
-  // // Событие клика для logo
-  logo.on('click', getActiveRectTop);
-
-})();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// --------------------------------------------------
-// Toggle Testing and Preview Screen + Testing Screen
-// --------------------------------------------------
+// ======================================
+// Toggle Preview Screen / validate email
+// ======================================
 
 ;(function() {
   var geniusesItem = $('.geniuses-item'),
@@ -623,13 +363,19 @@ if (  $(window).width() >= 1100 ) {
       displayTimer = $('.timer span'),
       inputEmail = $('.input-email');
 
+  function validateEmail(email) {
+    var regExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regExp.test(email);
+  };
+
   // Показать Testing Screen
   function showTestingScreen() {
     screenTesting.addClass('testing-start');
     scrollContainer.addClass('active');
 
     questionsList.show();
- 
+  
+    $('.btn-back').hide();
     btnStart.hide();
     btnSubmit.show();
 
@@ -638,89 +384,37 @@ if (  $(window).width() >= 1100 ) {
 
     // Старт таймера
     startTimer(300, displayTimer);
-  }
-  
-  // Сбросить состояние Preview Screen
-  function resetStatePreviewScreen() {
-    $('.toggle-item').removeClass('enabled');
-    // $('.geniuses-list').removeClass('visible');
-    $('.geniuses-list').hide();
-    $('.rectangle-dinamic-up')
-          .removeClass('broken-border-lg')
-          .addClass('broken-border');
-  }
+  };
 
-  // Показать финальное сообщение
-  function showFinalMessage() {
-    resetStatePreviewScreen();
+  // ======
+  // Events
+  // ======
 
-    $('.rectangle-dynamic-down').addClass('finish');
-    $('.finish-msg').show();
-    $('.screen-preview').css({'pointer-events': 'none'});
-  }
-
-  // Скрыть финальное сообщение
-  function hideFinalMessage() {
-    $('.rectangle-dynamic-down')
-          .height('')
-          .removeClass('active')
-          .removeClass('finish')
-          .addClass('broken-border');
-
-    $('.rectangle-dinamic-up').removeClass('broken-border');
-          
-    $('.finish-msg').hide();
-    $('.screen-preview').css({'pointer-events': 'all'});
-
-    setTimeout(function() {
-      location.reload();
-    }, 400);
-  }
-
-  // Событие для geniusesItem
-  // geniusesItem.each(function(index, elem) {
-  //   $(this).on('click', function() {
-      
-  //     screenPreview.fadeOut(400, function() {
-  //       screenTesting.fadeIn(400);
-  //     });
-  //   })
-  // })
-
-  // Submit
-  btnSubmit.on('click', function() {
-    screenTesting.fadeOut(400, function() {
-      screenPreview.fadeIn(400);
-    });
-
-    showFinalMessage();
-
-    setTimeout(function() {
-      hideFinalMessage();
-    }, 3000)
-  });
-
-  // Start
   btnStart.on('click', function() {
-    showTestingScreen();
+    if ( validateEmail(inputEmail.val()) ) {
+      inputEmail.removeClass('error');
+      showTestingScreen();
+    } else {
+      inputEmail.addClass('error').focus();
+    }
   });
 
-  
   inputEmail.on('input', function() {
-    if (this.value == '') {
-      btnStart.prop('disabled', true);
-    } else {
-      btnStart.prop('disabled', false);
+    var email = this.value;
+   
+    if ( validateEmail(email) ) {
+      inputEmail.removeClass('error');
+      btnStart.removeClass('no-active');
     }
-  })
+  });
 
 })();
 
 
 
-// ---------------
+// =====================
 // Scroll Testing Screen
-// ---------------
+// =====================
 
 // Старт экрана с вопросами
 function startTestingScreen() {
@@ -759,14 +453,22 @@ function scrollQuestionsList(fixingPoint, containerScroll) {
 // Dinamic content
 // ---------------
 
-// Заполнение прогресс бара
+// Заполнение прогресс бара + кнопка submit
 function watchProgressBar(countDash) {
   var inputAnswer = $('.input-answer');
   var question = $('.questions-list .question');
+  var progressBar = $('.progress-bar');
   var scale = $('.progress-bar .scale');
-  // var countDash = 5;
-
   var btnSubmit = $('.button-submit');
+
+  var screenTesting = $('.screen-testing'),
+      screenPreview = $('.screen-preview');
+
+  var countAnswer;
+
+  // ======================
+  // Work with progress bar
+  // ======================
 
   inputAnswer.each(function(index, element) {
     $(this).on('change', function() {
@@ -779,12 +481,13 @@ function watchProgressBar(countDash) {
 
   function checkStatusBtnSubmit(countAnswer) {
     if (countAnswer == countDash) {
-      btnSubmit.prop('disabled', false);
+      progressBar.removeClass('error');
+      btnSubmit.removeClass('no-active');
     }
   };
   
   function countingAnswers() {
-    let answerArray = [];
+    var answerArray = [];
   
     question.each(function(i, el) {
       var check = $(this).data('checked');
@@ -794,6 +497,7 @@ function watchProgressBar(countDash) {
       }
     });
   
+    countAnswer = answerArray.length;
     changeHeightProgressBar(answerArray.length);
     checkStatusBtnSubmit(answerArray.length);
   };
@@ -801,6 +505,75 @@ function watchProgressBar(countDash) {
   function changeHeightProgressBar(count) {
     scale.css({'height': (100 / countDash ) * count + '%'});
   };
+
+
+  // ===================
+  // Work with final msg
+  // ===================
+  
+  // Сбросить состояние Preview Screen
+  function resetStatePreviewScreen() {
+    $('.toggle-item').removeClass('enabled');
+
+    $('.geniuses-list').hide();
+    $('.rectangle-dinamic-up')
+          .removeClass('broken-border-lg')
+          .addClass('broken-border');
+  };
+
+  // Показать финальное сообщение
+  function showFinalMessage() {
+    resetStatePreviewScreen();
+
+    $('.rectangle-dynamic-down').height( $(window) >= 1100 ? 266 : 210 ).addClass('finish');
+    $('.finish-msg').show();
+    $('.screen-preview').css({'pointer-events': 'none'});
+  };
+
+  // Скрыть финальное сообщение
+  function hideFinalMessage() {
+    $('.rectangle-dynamic-down').animate({
+            'margin-top': '-150px'
+          }, 300)
+          // .height( $(window) >= 1100 ? 266 : 210 )
+          .removeClass('fill-details')
+          .removeClass('active')
+          .removeClass('finish')
+          .addClass('broken-border');
+
+    //$('.rectangle-dinamic-up').removeClass('broken-border');
+      
+    $('.border-top').hide();
+    $('.finish-msg').hide();
+    $('.screen-preview').css({'pointer-events': 'all'});
+
+    setTimeout(function() {
+      location.reload();
+    }, 400);
+  };
+
+  // ======
+  // Events
+  // ======
+
+  btnSubmit.on('click', function() {
+    if (countAnswer == countDash) {
+      progressBar.removeClass('error');
+
+      screenTesting.fadeOut(400, function() {
+        screenPreview.fadeIn(400);
+      });
+
+      showFinalMessage();
+
+      setTimeout(function() {
+        hideFinalMessage();
+      }, 3000)
+
+    } else {
+      progressBar.addClass('error');
+    }
+  });
 };
 
 // Генерация списка вопросов в зависимости от выбранного geniuses 
@@ -888,17 +661,44 @@ var generationProgressBar = function(data) {
       screenTesting = $('.screen-testing'),
       screenPreview = $('.screen-preview');
 
-  var btnBack = $('.js-logo-back');
-  
-  var handlerBtnBack = function() {
-    btnBack.on('click', function() {
-      if ( !screenTesting.hasClass('testing-start') ) {
-        screenTesting.fadeOut(400, function() {
+  var btnBack = $('.btn-back');
+  var copyLogo = $('.copy-logo-wrap');
+
+  // Animations
+  function animateTransitionScreensBack() {
+    copyLogo.fadeIn();
+
+    screenTesting.fadeOut(400, function(){
+      copyLogo
+        .addClass('transition-logo')
+        .removeClass('anim-copy-logo')
+        .delay(1300)
+        .queue(function() {
           screenPreview.fadeIn(400);
-        });
-      }
+          $(this).dequeue();
+      });
     });
   };
+
+  function animateTransitionScreensForward() {
+    screenPreview.fadeOut(400, function(){
+      copyLogo
+        .addClass('anim-copy-logo')
+        .delay(1000).queue(function() {
+          screenTesting.fadeIn(400);
+          $(this).delay(100).fadeOut();
+          $(this).dequeue();
+      });
+    });
+  };
+  
+  // var handlerBtnBack = function() {
+    btnBack.on('click', function() {
+      if ( !screenTesting.hasClass('testing-start') ) {
+        animateTransitionScreensBack();
+      }
+    });
+  // };
 
   var htmlGeniuses = function(geniuse, i) {
     return '<li class="geniuses-item" data-index="' + i + '">' + 
@@ -921,15 +721,19 @@ var generationProgressBar = function(data) {
   function handlerGeniuses(elem, data) {
     var index = $(elem).data('index');
 
-    screenPreview.fadeOut(400, function() {
-      screenTesting.fadeIn(400);
-    });
+    if ( $(window).scrollTop() >= 100 ) {
+      $('html,body').animate({ scrollTop: 0 }, 700, function() {
+        animateTransitionScreensForward();  
+      });
+    } else {
+      animateTransitionScreensForward();
+    }
 
     generationQuestionsList(data[index]);
     generationHeadingForTesting(data[index]);
     generationProgressBar(data[index]);
 
-    handlerBtnBack();
+    // handlerBtnBack();
   };
 
   // Найти и повесить событие клика на geniuses
@@ -947,144 +751,3 @@ var generationProgressBar = function(data) {
   })(data);
 
 })(dataGeniuses);
-
-
-// ===================================
-    // Второй вариант анимации
-    // ======================================
-
-    // if (initStateRectDown == true) {
-      
-    //   rectDownDescItem.siblings().fadeOut(300);
-
-    //   rectDown
-    //     .delay(400)
-    //     .queue(function() {
-    //       $(this).removeClass('active').removeClass('fill-details');
-    //       $(this).dequeue();
-    //     }).delay(1000).queue(function() {
-    //       $('.border-top').hide();
-    //       $(this).addClass('broken-border');
-
-    //       $(this).delay(300).animate({
-    //         'margin-top': '-150px'
-    //       }, 600)
-
-    //       $(this).dequeue();
-
-
-    //       $(this).delay(400).animate({
-    //         'margin-top': '-45px'
-    //       }, 600, function() {
-    //         $('.border-top').show(); // Для второй анимации
-    //         rectDown.removeClass('broken-border').addClass('fill-details')
-    //           .delay(500)
-    //           .queue(function() {
-    //             $(this).addClass('active');
-
-    //             rectDownDesc.fadeTo(0, 1, function() {
-    //                               rectDownDescItem
-    //                                 .eq(index)
-    //                                 .delay(700).fadeIn(300)
-    //                                 .siblings()
-    //                                 .hide();
-    //             })
-
-
-    //             $(this).dequeue();
-      
-                
-    //           });
-      
-    //       });
-
-
-    //     })
-
-
-    //   $('.toggle-panel').removeClass('no-touch');
-    // }
-
-
-
-
-
-    // else if (initStateRectDown == false) {
-    //   rectDownDesc.fadeTo(0, 1, function() {
-    //     rectDownDescItem
-    //       .eq(index)
-    //       .delay(1800).fadeIn(300)
-    //       .siblings()
-    //       .hide();
-
-    //       $('.toggle-panel').removeClass('no-touch');
-    //   });
-    // }
-
-
-    // ===================================
-    // Конец
-    // ======================================
-
-
-    // _________________________________________________
-
-
-    // ===================================
-    // Первый вариант анимации
-    // ======================================
-
-    // if (initStateRectDown == true) {
-
-    //   rectDownDescItem.siblings().fadeOut(300);
- 
-    //   rectDown
-    //     .delay(400)
-    //     .queue(function() {
-    //       $(this).addClass('change-width');
-    //       $(this).dequeue();
-
-    //       $(this).delay(700).animate({
-    //         'margin-top': '-150px'
-    //       }, 700, function() {
-    //         rectDown.removeClass('active').removeClass('fill-details').removeClass('change-width').addClass('broken-border')
-    //         rectDown.delay(1000).animate({
-    //           'margin-top': '-45px'
-    //         }, 600, function() {
-    //           rectDown.removeClass('broken-border').addClass('fill-details')
-    //             .delay(400)
-    //             .queue(function() {
-    //               $(this).addClass('active');
-    //               $(this).dequeue();                
-  
-    //               rectDownDesc.fadeTo(0, 1, function() {
-    //                 rectDownDescItem
-    //                   .eq(index)
-    //                   .delay(700).fadeIn(300)
-    //                   .siblings()
-    //                   .hide();
-  
-    //                   $('.toggle-panel').removeClass('no-touch');
-    //               });
-    //             });
-        
-    //         });
-    //       })
-    //     })
-    // }
-    
-    // else if (initStateRectDown == false) {
-    //   rectDownDesc.fadeTo(0, 1, function() {
-    //     rectDownDescItem
-    //       .eq(index)
-    //       .delay(1650).fadeIn(300)
-    //       .siblings()
-    //       .hide();
-
-    //       $('.toggle-panel').removeClass('no-touch');
-    //   });
-    // }
-
-    // ===================================
-    // Конец!
-    // ======================================

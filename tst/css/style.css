@@ -184,6 +184,7 @@ html {
 
 body {
   min-width: 320px;
+  min-height: 900px;
   margin: 0;
   font-family: "Avenir";
   font-size: 16px;
@@ -201,22 +202,23 @@ body.no-scroll {
 .single-screen {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-image: url("../image/bg.jpg");
-  background-repeat: no-repeat;
+  background-image: url("../image/bg2.jpeg");
+  background-repeat: repeat-y;
   background-position: center top;
   background-size: 100%;
+  background-attachment: fixed;
 }
 
 @media screen and (min-width: 768px) {
   .single-screen {
     background-image: url("../image/bg_web.jpg");
+    background-size: 1440px 740px;
   }
 }
 
 @media screen and (min-width: 1100px) {
   .single-screen {
-    background-size: 1440px;
+    background-size: 1440px 740px;
   }
 }
 
@@ -351,6 +353,81 @@ body.no-scroll {
 .rect-down-animation {
   -webkit-animation: slideTop 1s ease;
   animation: slideTop 1s ease;
+}
+
+.copy-logo-wrap {
+  position: absolute;
+  width: 177px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 203px);
+  -ms-transform: translate(-50%, 203px);
+  transform: translate(-50%, 203px);
+}
+
+@media screen and (max-width: 413px) {
+  .copy-logo-wrap {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .copy-logo-wrap {
+    width: 196px;
+    -webkit-transform: translate(-50%, 244px);
+    -ms-transform: translate(-50%, 244px);
+    transform: translate(-50%, 244px);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .copy-logo-wrap {
+    -webkit-transform: translate(-50%, 267px);
+    -ms-transform: translate(-50%, 267px);
+    transform: translate(-50%, 267px);
+  }
+}
+
+.copy-logo-wrap.transition-logo {
+  -webkit-transition: width 0.3s linear, -webkit-transform 1s ease 0.4s;
+  transition: width 0.3s linear, -webkit-transform 1s ease 0.4s;
+  -o-transition: width 0.3s linear, transform 1s ease 0.4s;
+  transition: width 0.3s linear, transform 1s ease 0.4s;
+  transition: width 0.3s linear, transform 1s ease 0.4s, -webkit-transform 1s ease 0.4s;
+}
+
+.copy-logo-wrap.anim-copy-logo {
+  width: 177px;
+  -webkit-transform: translate(-50%, 45px);
+  -ms-transform: translate(-50%, 45px);
+  transform: translate(-50%, 45px);
+  -webkit-transition: width 0.3s linear 0.8s, -webkit-transform 1s ease;
+  transition: width 0.3s linear 0.8s, -webkit-transform 1s ease;
+  -o-transition: width 0.3s linear 0.8s, transform 1s ease;
+  transition: width 0.3s linear 0.8s, transform 1s ease;
+  transition: width 0.3s linear 0.8s, transform 1s ease, -webkit-transform 1s ease;
+}
+
+@media screen and (max-width: 413px) {
+  .copy-logo-wrap.anim-copy-logo {
+    width: 176px;
+    -webkit-transform: translate(-50%, 40px);
+    -ms-transform: translate(-50%, 40px);
+    transform: translate(-50%, 40px);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .copy-logo-wrap.anim-copy-logo {
+    width: 150px;
+    -webkit-transform: translate(-50%, 73px);
+    -ms-transform: translate(-50%, 73px);
+    transform: translate(-50%, 73px);
+  }
+}
+
+.copy-logo-wrap .logo {
+  width: 100%;
+  cursor: pointer;
 }
 
 .screen-preview .logo-wrap {
@@ -577,7 +654,7 @@ body.no-scroll {
 @media screen and (min-width: 1100px) {
   .rectangle-dynamic-down {
     width: 430px;
-    height: 267px;
+    height: 266px;
   }
 }
 
@@ -615,8 +692,7 @@ body.no-scroll {
   .rectangle-dynamic-down.finish {
     width: 430px;
     min-height: 280px;
-    left: 0;
-    margin-left: 15px;
+    left: 50%;
   }
 }
 
@@ -654,41 +730,33 @@ body.no-scroll {
 
 .description-list {
   height: 100%;
+  opacity: 0;
   -webkit-transition: opacity 0.3s ease;
   -o-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
-  opacity: 0;
-}
-
-@media screen and (min-width: 1100px) {
-  .description-list {
-    display: none;
-    opacity: 1;
-  }
 }
 
 @media screen and (max-width: 413px) {
   .description-list {
-    padding: 23px;
+    padding: 0px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .description-list {
+    width: 837px;
   }
 }
 
 .description-list .desc {
+  padding: 30px;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.67;
   letter-spacing: 1px;
   color: #fff;
   text-align: center;
-  padding: 30px;
   opacity: 0;
-}
-
-@media screen and (min-width: 1100px) {
-  .description-list .desc {
-    display: none;
-    opacity: 1;
-  }
 }
 
 .description-list .desc::after {
@@ -697,28 +765,26 @@ body.no-scroll {
   clear: both;
 }
 
-.description-list .desc.visible {
-  display: block;
-}
-
 @media screen and (max-width: 413px) {
   .description-list .desc {
     font-size: 14px;
   }
 }
 
-.description-list .desc .desc-col:nth-child(n + 2) {
-  display: none;
+.description-list .desc .desc-col {
+  margin-bottom: 15px;
+}
+
+.description-list .desc .desc-col:last-of-type {
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 1100px) {
   .description-list .desc .desc-col {
-    width: calc(100% / 3 - 30px);
     float: left;
+    width: calc(100% / 3 - 30px);
+    margin: 0;
     text-align: left;
-  }
-  .description-list .desc .desc-col:nth-child(n + 2) {
-    display: block;
   }
   .description-list .desc .desc-col:nth-child(2) {
     margin: 0 45px;
@@ -841,6 +907,7 @@ body.no-scroll {
 }
 
 .screen-testing .logo-wrap {
+  position: relative;
   margin-bottom: 38px;
   text-align: center;
 }
@@ -858,6 +925,17 @@ body.no-scroll {
   .screen-testing .logo-wrap .testing-logo {
     width: 150px;
   }
+}
+
+.screen-testing .logo-wrap .btn-back {
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  background: url("../image/ic_back.svg") no-repeat center;
+  background-size: contain;
+  cursor: pointer;
 }
 
 .testing-wrap {
@@ -993,6 +1071,7 @@ body.no-scroll {
 .testing-wrap .bg-email .input-email {
   width: 100%;
   height: 44px;
+  font-family: "Avenir";
   font-size: 16px;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.66);
@@ -1008,6 +1087,10 @@ body.no-scroll {
     font-size: 15px;
     letter-spacing: 2.3px;
   }
+}
+
+.testing-wrap .bg-email .input-email.error {
+  border: 1px solid #f12f48;
 }
 
 .testing-wrap .bg-email .input-email::-webkit-input-placeholder {
@@ -1036,6 +1119,18 @@ body.no-scroll {
 
 .testing-wrap .bg-email .input-email::placeholder {
   color: rgba(255, 255, 255, 0.66);
+}
+
+.testing-wrap .bg-email .input-email:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.testing-wrap .bg-email .input-email:focus::-moz-placeholder {
+  color: transparent;
+}
+
+.testing-wrap .bg-email .input-email:focus:-ms-input-placeholder {
+  color: transparent;
 }
 
 .testing-wrap .bg-timer {
@@ -1123,6 +1218,11 @@ body.no-scroll {
   }
 }
 
+.testing-wrap .middle-heading .progress-bar.error {
+  outline: 1px solid #f12f48;
+  outline-offset: -1px;
+}
+
 .testing-wrap .middle-heading .progress-bar .scale-dash {
   position: absolute;
   top: 0;
@@ -1202,7 +1302,7 @@ body.no-scroll {
   }
 }
 
-.testing-wrap .bg-button-start .button[disabled] {
+.testing-wrap .bg-button-start .button.no-active {
   color: rgba(255, 255, 255, 0.2);
 }
 
