@@ -63,7 +63,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./src/app/app.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.content-area {\n  position: relative;\n}"
+module.exports = ".main-container {\n  max-width: 500px;\n  min-width: 320px;\n  margin: 0 auto;\n}\n\n.header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.content-area {\n  position: relative;\n}\n"
 
 /***/ }),
 
@@ -169,14 +169,14 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/note/note.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".btn-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-right: 0;\n}\n\n.btn-group .btn {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 50%;\n          flex: 0 0 50%;\n}"
+module.exports = ".btn-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-right: 0;\n}\n\n.btn-group .btn {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 50%;\n          flex: 0 0 50%;\n}\n\n.body {\n  margin-top: 30px;\n}\n\n.body .title {\n  font-size: 20px;\n  font-weight: 500;\n}\n\n.body .time {\n  font-size: 11px;\n  color: #9a8e8e;\n}\n\n.body .description {\n  margin-top: 15px;\n  font-size: 17px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/note/note.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"btn-group\">\n  <button class=\"btn btn-success-outline\" (click)=\"goToBack()\">Back</button>\n  <button class=\"btn btn-danger-outline\" (click)=\"delete()\">Delete</button>\n</div>\n\n<div *ngIf=\"note\">\n  <div>{{note.title}}</div>\n  <div>{{note.id}}</div>\n  <div>{{note.description}}</div>\n  <div>{{note.time}}</div>\n</div>\n"
+module.exports = "<div class=\"btn-group\">\n  <button class=\"btn btn-success-outline\" (click)=\"goToBack()\">Back</button>\n  <button class=\"btn btn-danger-outline\" (click)=\"delete()\">Delete</button>\n</div>\n\n<div *ngIf=\"note\" class=\"body\">\n  <div class=\"title\">{{ note.title }}</div>\n  <div class=\"time\">{{ note.time | date:'medium' }}</div>\n  <div class=\"description\">{{ note.description }}</div>\n</div>\n"
 
 /***/ }),
 
@@ -293,8 +293,7 @@ var NotesFormComponent = /** @class */ (function () {
         this.goToBack();
     };
     NotesFormComponent.prototype.getId = function () {
-        var _this = this;
-        this.storage.getNotes().then(function (result) { return _this.id = result.length; });
+        this.id = Math.floor((1 + Math.random()) * 0x10000);
     };
     NotesFormComponent.prototype.getDate = function () {
         return new Date().toString();
@@ -320,14 +319,14 @@ var NotesFormComponent = /** @class */ (function () {
 /***/ "./src/app/notes-host/notes-host.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "button.btn {\n  margin: 0;\n}\n\n.notes-list {\n  margin-top: 20px;\n}\n\n.note {\n  padding: 10px 0;\n  border-bottom: 1px solid #C1CDD4;\n  cursor: pointer;\n}\n\n.note .note-topline {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.note .title {\n  font-size: 17px;\n  font-weight: 500;\n}\n\n.note .time {\n  font-size: 13px;\n  color: #939494;\n}\n\n.note .description {\n  font-size: 15px;\n  white-space: nowrap; \n  overflow: hidden;\n  text-overflow:ellipsis;\n}\n\n.empty-tip {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  font-size: 15px;\n  line-height: 18px;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  text-align: center;\n}"
+module.exports = "button.btn {\n  margin: 0;\n}\n\n.notes-list {\n  margin-top: 20px;\n}\n\n.note {\n  padding: 10px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #C1CDD4;\n}\n\n.note span {\n  display: block;\n}\n\n.note .title,\n.note .description {\n  white-space: nowrap; \n  overflow: hidden;\n  text-overflow:ellipsis;\n}\n\n.note .title {\n  font-size: 17px;\n  font-weight: 500;\n}\n\n.note .description {\n  font-size: 15px;\n}\n\n.note .time {\n  font-size: 11px;\n  color: #939494;\n  text-align: right;\n}\n\n.empty-tip {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  font-size: 15px;\n  line-height: 18px;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  text-align: center;\n}"
 
 /***/ }),
 
 /***/ "./src/app/notes-host/notes-host.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn btn-block\" (click)=\"goToForm()\">add note</button>\n\n<div *ngIf=\"notes && notes.length == 0\" class=\"empty-tip\">You do not have<br>any notes</div>\n\n<ul class=\"notes-list\">\n  <li class=\"note\" *ngFor=\"let note of notes\" (click)=\"goToNote(note)\">\n    <div class=\"note-topline\">\n      <span class=\"title\">{{ note.title }}</span>\n      <span class=\"time\">{{ note.time | date:'mediumDate'}}</span>\n    </div>\n    <div class=\"description\">{{ note.description }}</div>\n  </li>\n</ul>"
+module.exports = "<button class=\"btn btn-block\" (click)=\"goToForm()\">add note</button>\n\n<div *ngIf=\"notes && notes.length == 0\" class=\"empty-tip\">You do not have<br>any notes</div>\n\n<ul class=\"notes-list\">\n  <li class=\"note\" *ngFor=\"let note of notes\" (click)=\"goToNote(note)\">\n    <span class=\"title\">{{ note.title }}</span>\n    <span class=\"description\">{{ note.description }}</span>\n    <span class=\"time\">{{ note.time | date:'medium'}}</span>\n  </li>\n</ul>"
 
 /***/ }),
 
@@ -431,7 +430,7 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.addNote = function (note) {
         var _this = this;
         this.getNotes().then(function (result) {
-            result.push(note);
+            result.unshift(note);
             localStorage.setItem(_this.keyName, JSON.stringify(result));
         });
     };

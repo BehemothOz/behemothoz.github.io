@@ -81,7 +81,7 @@ module.exports = "/*!\n * Copyright (c) 2016-2017 VMware, Inc. All Rights Reserv
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nul {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n  background-color: #fafafa;\n}\nul {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}"
 
 /***/ }),
 
