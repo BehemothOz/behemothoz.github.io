@@ -49,7 +49,7 @@ var AppRoutingModule = /** @class */ (function () {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes, { useHash: true })],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]]
         })
     ], AppRoutingModule);
@@ -327,7 +327,7 @@ module.exports = "button.btn {\n  margin: 0;\n}\n\n.notes-list {\n  margin-top: 
 /***/ "./src/app/notes-host/notes-host.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn btn-block\" (click)=\"goToForm()\">add note</button>\n\n<div *ngIf=\"notes.length == 0\" class=\"empty-tip\">You do not have<br>any notes</div>\n\n<ul class=\"notes-list\">\n  <li class=\"note\" *ngFor=\"let note of notes\" (click)=\"goToNote(note)\">\n    <div class=\"note-topline\">\n      <span class=\"title\">{{ note.title }}</span>\n      <span class=\"time\">{{ note.time | date:'mediumDate'}}</span>\n    </div>\n    <div class=\"description\">{{ note.description }}</div>\n  </li>\n</ul>"
+module.exports = "<button class=\"btn btn-block\" (click)=\"goToForm()\">add note</button>\n\n<div *ngIf=\"notes && notes.length == 0\" class=\"empty-tip\">You do not have<br>any notes</div>\n\n<ul class=\"notes-list\">\n  <li class=\"note\" *ngFor=\"let note of notes\" (click)=\"goToNote(note)\">\n    <div class=\"note-topline\">\n      <span class=\"title\">{{ note.title }}</span>\n      <span class=\"time\">{{ note.time | date:'mediumDate'}}</span>\n    </div>\n    <div class=\"description\">{{ note.description }}</div>\n  </li>\n</ul>"
 
 /***/ }),
 
