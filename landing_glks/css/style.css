@@ -462,6 +462,9 @@ h6 {
   @media screen and (max-width: 768px) {
     .popup {
       width: 90%; } }
+  @media screen and (max-width: 414px) {
+    .popup {
+      padding: 20px 10px; } }
   .popup .popup-title {
     font-size: 3rem;
     margin-bottom: 1rem; }
@@ -475,6 +478,9 @@ h6 {
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
     line-height: 1.5; }
+    @media screen and (max-width: 414px) {
+      .popup .popup-desc {
+        font-size: 1rem; } }
 
 .popup.visible {
   opacity: 1;
